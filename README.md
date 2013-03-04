@@ -7,10 +7,10 @@ compiler with Objective-C code is so complete it has grown to include dictionary
 and string concatenation along with regular expression operators and a few utility classes
 used as a shorthand for common operations.
 
-The header files contain a number of wrapper classes defining inline functions for certain
-operators effectively becoming a pre-processor for code. These header files are typically
-included in your project's "<Project>-Prefix.pch" precompiled header file so they are
-available to all sources in the project. No linking to an external library is required.
+The header file Foundation++.h contain a number of wrapper classes defining inline functions
+for certain operators effectively becoming a pre-processor for code. These header files are
+typically included in your project's "<Project>-Prefix.pch" precompiled header file so they
+are available to all sources in the project. No linking to an external library is required.
 
-An overview is available at [this link](http://objectivecpp/intro.html).
+An overview is available at [this link](http://objectivecpp.johnholdsworth.com/intro.html).
 
