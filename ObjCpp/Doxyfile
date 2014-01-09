@@ -32,7 +32,7 @@ PROJECT_NAME           = "Objective-C++ Preprocessor"
 # This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
-PROJECT_NUMBER         = "4.6 with ARC & GC"
+PROJECT_NUMBER         = "5.0 with ARC & GC"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description 
 # for a project that appears at the top of each page and should give viewer 

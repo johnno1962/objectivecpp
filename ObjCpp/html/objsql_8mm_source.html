@@ -17,7 +17,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Objective-C++ Preprocessor
-   &#160;<span id="projectnumber">4.6 with ARC &amp; GC</span>
+   &#160;<span id="projectnumber">5.0 with ARC &amp; GC</span>
    </div>
    <div id="projectbrief">C++ classes to enhance syntax and manage reference counting.</div>
   </td>
@@ -57,8 +57,8 @@
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  Created by John Holdsworth on 01/04/2009.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  Copyright 2009 John Holdsworth.</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *  $Id: //depot/ObjCpp/objsql.mm#67 $</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *  $DateTime: 2012/11/08 21:48:42 $</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *  $Id: //depot/ObjCpp/objsql.mm#69 $</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *  $DateTime: 2014/01/09 20:25:53 $</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  C++ classes to wrap up XCode classes for operator overload of</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  useful operations such as access to NSArrays and NSDictionary</span></div>
@@ -181,7 +181,7 @@
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
 <div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="interface_o_o_record.html#ac13691cfe7c0dcf7f645032f034a7ee8">  131</a></span>&#160;+ (BOOL)exportTo:(<a class="code" href="class_o_o_file.html">OOFile</a> &amp;)file delimiter:(<a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a>)delim {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">return</span> file.<a class="code" href="class_o_o_file.html#aa52dae3cef55eb1c5d8ae0059093a935">save</a>( [<a class="code" href="interface_o_o_meta_data.html">OOMetaData</a> export:[<span class="keyword">self</span> <a class="code" href="interface_o_o_record.html#a1dfb9c9e0244780cfc2eefb2e4e46fd7">select</a>] delimiter:delim] );</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">return</span> file.<a class="code" href="class_o_o_u_r_l.html#abea48bbea4d5d85863d7af601455ee5a">save</a>( [<a class="code" href="interface_o_o_meta_data.html">OOMetaData</a> export:[<span class="keyword">self</span> <a class="code" href="interface_o_o_record.html#a1dfb9c9e0244780cfc2eefb2e4e46fd7">select</a>] delimiter:delim] );</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/**</span></div>
@@ -780,7 +780,7 @@
 <div class="line"><a name="l00728"></a><span class="lineno"><a class="code" href="interface_o_o_adaptor.html#a2470ad96fd7621f5ca9d3246f5ff2c22">  728</a></span>&#160;- (<a class="code" href="interface_o_o_adaptor.html">OOAdaptor</a> *)initPath:(<a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a>)path database:(<a class="code" href="interface_o_o_database.html">OODatabase</a> *)database {</div>
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    <span class="keywordflow">if</span> ( <span class="keyword">self</span> = [super init] ) {</div>
 <div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;        <a class="code" href="interface_o_o_adaptor.html#ab299a99918ff22de7cc1d918b5eda5c5">owner</a> = database;</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;        <a class="code" href="class_o_o_file.html">OOFile</a>( <a class="code" href="class_o_o_file.html">OOFile</a>( path ).directory() ).<a class="code" href="class_o_o_file.html#aef071d127322f2e3871d818a0337e563">mkdir</a>();</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;        <a class="code" href="class_o_o_file.html">OOFile</a>( <a class="code" href="class_o_o_file.html">OOFile</a>( path ).dir() ).<a class="code" href="class_o_o_file.html#aef071d127322f2e3871d818a0337e563">mkdir</a>();</div>
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        <span class="keywordflow">if</span> ( (<a class="code" href="interface_o_o_adaptor.html#ab299a99918ff22de7cc1d918b5eda5c5">owner</a>-&gt;<a class="code" href="interface_o_o_database.html#afb0242f07f4f610ab8159971fbffb138">errcode</a> = sqlite3_open( path, &amp;<a class="code" href="interface_o_o_adaptor.html#a80f5a94ee8eab6e8bd7491138c088b98">db</a> )) != SQLITE_OK ) {</div>
 <div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;            <a class="code" href="objcpp_8h.html#a0647b5b82106e1568ba608021c7fc16e">OOWarn</a>( <span class="stringliteral">@&quot;-[OOAdaptor initPath:database:] Error opening database at path: %@&quot;</span>, *path );</div>
 <div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;            <span class="keywordflow">return</span> nil;</div>
@@ -1147,7 +1147,7 @@
 <div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;            values[key] = [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)value];</div>
 <div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;    <span class="keywordflow">for</span> ( NSString *key in *<a class="code" href="interface_o_o_meta_data.html#ad900f22274880f0772b0d9056a5fcadd">dates</a> )</div>
 <div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;        <span class="keywordflow">if</span> ( (value = values[key]) )</div>
-<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;            values[key] = [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];</div>
+<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;            values[key] = (<span class="keywordtype">id</span>)[NSDate dateWithTimeIntervalSince1970:[value doubleValue]];</div>
 <div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;    <span class="keywordflow">for</span> ( NSString *key in *<a class="code" href="interface_o_o_meta_data.html#acfb30fa38a13d7398b534ab1f783e9a0">boxed</a> ) {</div>
 <div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;        <span class="keywordflow">if</span> ( (value = values[key]) ) {</div>
 <div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;            value = value != <a class="code" href="objcpp_8h.html#aab53c44a330e73cd8cc02900d335f65f">OONull</a> ? <a class="code" href="objcpp_8h.html#a780ded66ec62b00d73c2581c4033a902">OO_RETAIN</a>( value ) : nil;</div>
@@ -1409,7 +1409,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Feb 23 2013 07:49:11 for Objective-C++ Preprocessor by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 9 2014 20:29:13 for Objective-C++ Preprocessor by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

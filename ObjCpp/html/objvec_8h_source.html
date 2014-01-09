@@ -17,7 +17,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Objective-C++ Preprocessor
-   &#160;<span id="projectnumber">4.6 with ARC &amp; GC</span>
+   &#160;<span id="projectnumber">5.0 with ARC &amp; GC</span>
    </div>
    <div id="projectbrief">C++ classes to enhance syntax and manage reference counting.</div>
   </td>
@@ -57,8 +57,8 @@
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  Created by John Holdsworth on 01/04/2009.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  Copyright 2009 © John Holdsworth. All Rights Reserved.</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *  $Id: //depot/ObjCpp/objvec.h#30 $</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *  $DateTime: 2013/02/17 20:35:18 $</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *  $Id: //depot/ObjCpp/objvec.h#31 $</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *  $DateTime: 2013/12/30 21:08:22 $</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  C++ classes to wrap up XCode classes for operator overload of</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  useful operations such as access to NSArrays and NSDictionary</span></div>
@@ -723,15 +723,15 @@
 <div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span>OOCounted&lt;CNAME&gt;;</div>
 <div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;    CNAME *ptr;</div>
 <div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    <span class="keywordtype">unsigned</span> references;</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;    OOCounter( CNAME *ptr ) {</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OOCounter( CNAME *ptr ) {</div>
 <div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;        this-&gt;ptr = ptr;</div>
 <div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;        this-&gt;references = 1;</div>
 <div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    }</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    OOCounter *retain() {</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OOCounter *retain() {</div>
 <div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;        references++;</div>
 <div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    }</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <span class="keywordtype">void</span> release() {</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keywordtype">void</span> release() {</div>
 <div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        <span class="keywordflow">if</span> ( --references == 0 ) {</div>
 <div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;            <span class="keyword">delete</span> ptr;</div>
 <div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            <span class="keyword">delete</span> <span class="keyword">this</span>;</div>
@@ -743,38 +743,40 @@
 <div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;<span class="keyword">class </span>OOCounted {</div>
 <div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    OOCounter&lt;CNAME&gt; *counter;</div>
 <div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    OOCounted() {</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OOCounted() {</div>
 <div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;        counter = NULL;</div>
 <div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    }</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;    OOCounted( CNAME *ptr ) {</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OOCounted( CNAME *ptr ) {</div>
 <div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;        counter = <span class="keyword">new</span> OOCounter&lt;CNAME&gt;( ptr );</div>
 <div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    }</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    OOCounted( <span class="keyword">const</span> OOCounted &amp;counted ) {</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OOCounted( <span class="keyword">const</span> OOCounted &amp;counted ) {</div>
 <div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;        counter = counted.counter-&gt;retain();</div>
 <div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    }</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    OOCounted &amp;operator = ( <span class="keyword">const</span> OOCounted &amp;counted ) {</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;        OOCounter&lt;CNAME&gt; *old = counted.counter;</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OOCounted &amp;operator = ( <span class="keyword">const</span> OOCounted &amp;counted ) {</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;        OOCounter&lt;CNAME&gt; *old = counter;</div>
 <div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;        counter = counted.counter-&gt;retain();</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;        old-&gt;release();</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    }</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    CNAME *operator -&gt; () {</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;        <span class="keywordflow">return</span> counter-&gt;ptr;</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    }</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    CNAME &amp;<a class="code" href="objcpp_8h.html#a0285bca8bff5107ead59871d08f0e997">operator * </a>() {</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;        <span class="keywordflow">return</span> *counter-&gt;ptr;</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    }</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    ~OOCounted() {</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;        counter-&gt;release();</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    }</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;};</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    </div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;        <span class="keywordflow">if</span> ( old )</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;            old-&gt;release();</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    }</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> CNAME *operator -&gt; () {</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;        <span class="keywordflow">return</span> counter-&gt;ptr;</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    }</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> CNAME &amp;<a class="code" href="objcpp_8h.html#a0285bca8bff5107ead59871d08f0e997">operator * </a>() {</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;        <span class="keywordflow">return</span> *counter-&gt;ptr;</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    }</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> ~OOCounted() {</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        <span class="keywordflow">if</span> ( counter )</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;            counter-&gt;release();</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    }</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;};</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    </div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Feb 23 2013 07:49:11 for Objective-C++ Preprocessor by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 9 2014 20:29:13 for Objective-C++ Preprocessor by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

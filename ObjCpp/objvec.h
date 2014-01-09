@@ -5,8 +5,8 @@
  *  Created by John Holdsworth on 01/04/2009.
  *  Copyright 2009 © John Holdsworth. All Rights Reserved.
  *
- *  $Id: //depot/ObjCpp/objvec.h#30 $
- *  $DateTime: 2013/02/17 20:35:18 $
+ *  $Id: //depot/ObjCpp/objvec.h#31 $
+ *  $DateTime: 2013/12/30 21:08:22 $
  *
  *  C++ classes to wrap up XCode classes for operator overload of
  *  useful operations such as access to NSArrays and NSDictionary
@@ -671,15 +671,15 @@ class OOCounter {
     friend class OOCounted<CNAME>;
     CNAME *ptr;
     unsigned references;
-    OOCounter( CNAME *ptr ) {
+    oo_inline OOCounter( CNAME *ptr ) {
         this->ptr = ptr;
         this->references = 1;
     }
-    OOCounter *retain() {
+    oo_inline OOCounter *retain() {
         references++;
         return this;
     }
-    void release() {
+    oo_inline void release() {
         if ( --references == 0 ) {
             delete ptr;
             delete this;
@@ -691,29 +691,31 @@ template <typename CNAME>
 class OOCounted {
     OOCounter<CNAME> *counter;
 public:
-    OOCounted() {
+    oo_inline OOCounted() {
         counter = NULL;
     }
-    OOCounted( CNAME *ptr ) {
+    oo_inline OOCounted( CNAME *ptr ) {
         counter = new OOCounter<CNAME>( ptr );
     }
-    OOCounted( const OOCounted &counted ) {
+    oo_inline OOCounted( const OOCounted &counted ) {
         counter = counted.counter->retain();
     }
-    OOCounted &operator = ( const OOCounted &counted ) {
-        OOCounter<CNAME> *old = counted.counter;
+    oo_inline OOCounted &operator = ( const OOCounted &counted ) {
+        OOCounter<CNAME> *old = counter;
         counter = counted.counter->retain();
-        old->release();
+        if ( old )
+            old->release();
         return *this;
     }
-    CNAME *operator -> () {
+    oo_inline CNAME *operator -> () {
         return counter->ptr;
     }
-    CNAME &operator * () {
+    oo_inline CNAME &operator * () {
         return *counter->ptr;
     }
-    ~OOCounted() {
-        counter->release();
+    oo_inline ~OOCounted() {
+        if ( counter )
+            counter->release();
     }
 };
     

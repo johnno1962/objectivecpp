@@ -5,8 +5,8 @@
  *  Created by John Holdsworth on 01/04/2009.
  *  Copyright 2009 © John Holdsworth. All Rights Reserved.
  *
- *  $Id: //depot/ObjCpp/objstr.h#95 $
- *  $DateTime: 2013/02/23 07:36:30 $
+ *  $Id: //depot/ObjCpp/objstr.h#101 $
+ *  $DateTime: 2014/01/09 20:28:57 $
  *
  *  C++ classes to wrap up XCode classes for operator overload of
  *  useful operations such as access to NSArrays and NSDictionary
@@ -874,6 +874,9 @@ public:
         return pattern().parseAll( *str );
     }
 
+    oo_inline OOString &operator = ( cOOString replacement ) {
+        return *str = OOReplace( idx, replacement ).exec( *str );
+    }
     oo_inline OOString &operator = ( NSString *replacement ) {
         return *str = OOReplace( idx, replacement ).exec( *str );
     }
@@ -963,6 +966,7 @@ public:
 #define cOORequest const OORequest &
 #define cOOURL const OOURL &
 #define cOOFile const OOFile &
+#define cOOData const OOData &
 
 static jmp_buf oo_jmp_env;
 
@@ -1001,6 +1005,9 @@ public:
 	}
 	oo_inline OORequest( const OORequest &req ) {
 		set( req.get() );
+	}
+	oo_inline OORequest( NSURLRequest *req ) {
+		*this = req; /////
 	}
 
 	oo_inline OORequest &operator = ( NSURLRequest *val ) { 
@@ -1131,6 +1138,17 @@ public:
 	oo_inline OOString post( cOOString post ) {
 		return request().post( post );
 	}
+
+	oo_inline BOOL save( cOOString string, NSStringEncoding encoding = NSUTF8StringEncoding ) {
+		return save( [string dataUsingEncoding:encoding allowLossyConversion:YES] );
+	}
+	oo_inline BOOL save( NSData *data, BOOL atomically = NO ) {
+		return [data writeToURL:*this atomically:atomically];
+	}
+	oo_inline BOOL save( id object ) {
+		return save( [NSKeyedArchiver archivedDataWithRootObject:object] );
+	}
+
 	OONode xml( int flags = 0 );
 };
 
@@ -1161,14 +1179,17 @@ public:
         return *this;
 	}
 	oo_inline OOString path() const {
-		return [get() path];
+		return [get() baseURL] ? [get() relativeString] : [get() path];
 	}
 	oo_inline OOString name() const {
 		return [path() lastPathComponent];
 	}
-    oo_inline OOString directory() const {
+    oo_inline OOString dir() const {
         return [path() stringByDeletingLastPathComponent];
     }
+	oo_inline OOString ext() const {
+		return [path() pathExtension];
+	}
     oo_inline OOFile &canonize() {
         return setPath( [path() stringByResolvingSymlinksInPath] );
     }
@@ -1198,22 +1219,13 @@ public:
         return [[NSFileManager defaultManager] createDirectoryAtPath:path()
                                          withIntermediateDirectories:flag attributes:attr error:NULL];
     }
-	oo_inline BOOL save( cOOString string, NSStringEncoding encoding = NSUTF8StringEncoding ) {
-		return save( [string dataUsingEncoding:encoding allowLossyConversion:YES] );
-	}
-	oo_inline BOOL save( NSData *data, BOOL atomically = NO ) {
-		return [data writeToFile:path() atomically:atomically];
-	}
-	oo_inline BOOL save( id object ) {
-		return save( [NSKeyedArchiver archivedDataWithRootObject:object] );
-	}
     oo_inline OOFile &operator = ( cOOString str ) {
         save( str ); return *this;
     }
-    oo_inline OOFile &operator = ( const OOData &data ) {
+    oo_inline OOFile &operator = ( cOOData data ) {
         save( *data ); return *this;
     }
-    oo_inline OOFile &operator = ( const OOFile &file ) {
+    oo_inline OOFile &operator = ( cOOFile file ) {
         return *this = file.data();
     }
 #if 000
@@ -1441,13 +1453,13 @@ public:
 || __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_5_0
 class OOJson : public OODictionary<OOString> {
 public:
-    OOJson( const OOData &data ) {
+    OOJson( cOOData data ) {
         *this = data;
     }
     OOJson( const OODictionary<OOString> &dict ) {
         *this = dict;
     }
-    OOJson &operator = ( const OOData &data ) {
+    OOJson &operator = ( cOOData data ) {
         set( [NSJSONSerialization JSONObjectWithData:data
               options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:NULL] );
         return *this;

@@ -353,6 +353,7 @@ inline void OOPattern::init( cOOString patin, int flags ) {
 		regerror( error, regex, errbuff, sizeof errbuff );
 		OOWarn( @"OOPattern::init() Regex compilation error: %s, in pattern: \"%@\"", errbuff, *pat );
 		delete regex;
+        regex = NULL;
 	}
 	else
 		cache[flags][patin] = regex;

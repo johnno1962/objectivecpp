@@ -619,7 +619,7 @@ static BOOL allTests = TRUE, memoryManaged = NO, useNetwork = TRUE;
 	OOAssertConstructed( 0 );
 #endif
 
-    if (1)  {
+    if ( allTests )  {
         OOCounted<Counted> a = new Counted();
         a = a;
         OOCounted<Counted> b = a, c;
@@ -627,7 +627,7 @@ static BOOL allTests = TRUE, memoryManaged = NO, useNetwork = TRUE;
         a->func();
         (*a).c++;
         a->c++;
-        assert( a->c == 3 );
+        assert( c->c == 3 );
         OOExpect("DECOUNTED");
     }
 

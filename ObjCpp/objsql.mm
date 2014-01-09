@@ -5,8 +5,8 @@
  *  Created by John Holdsworth on 01/04/2009.
  *  Copyright 2009 John Holdsworth.
  *
- *  $Id: //depot/ObjCpp/objsql.mm#67 $
- *  $DateTime: 2012/11/08 21:48:42 $
+ *  $Id: //depot/ObjCpp/objsql.mm#69 $
+ *  $DateTime: 2014/01/09 20:25:53 $
  *
  *  C++ classes to wrap up XCode classes for operator overload of
  *  useful operations such as access to NSArrays and NSDictionary
@@ -728,7 +728,7 @@ static OOReference<OODatabase *> sharedInstance;
 - (OOAdaptor *)initPath:(cOOString)path database:(OODatabase *)database {
     if ( self = [super init] ) {
         owner = database;
-        OOFile( OOFile( path ).directory() ).mkdir();
+        OOFile( OOFile( path ).dir() ).mkdir();
         if ( (owner->errcode = sqlite3_open( path, &db )) != SQLITE_OK ) {
             OOWarn( @"-[OOAdaptor initPath:database:] Error opening database at path: %@", *path );
             return nil;
@@ -1095,7 +1095,7 @@ static OOMetaData *tableOfTables;
 			values[key] = [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)value];
 	for ( NSString *key in *dates )
 		if ( (value = values[key]) )
-			values[key] = [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
+			values[key] = (id)[NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
 	for ( NSString *key in *boxed ) {
 		if ( (value = values[key]) ) {
 			value = value != OONull ? OO_RETAIN( value ) : nil;

@@ -9,7 +9,7 @@
 #ifndef ObjCpp_Foundation___h
 #define ObjCpp_Foundation___h
 
-#ifdef __OBJC__
+#if defined(__OBJC__) && defined(__cplusplus)
     #import "objcpp.h"
     #import "objstr.h"
 #endif
