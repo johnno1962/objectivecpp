@@ -724,6 +724,22 @@ static BOOL allTests = TRUE, memoryManaged = NO, useNetwork = TRUE;
 		str += @"!";
 		if ( str != (OOString)@"Hallo World!!" )
 			assert(0);
+
+        // check mutable deep copy
+        OOString str3;
+        str3 <<= str;
+        assert( str3 == str && *str3 != *str );
+        str3 += @"!";
+
+        OOArray<OOString> a2;
+        a2 <<= stringArray;
+        assert( [a2 isEqualTo:stringArray] && *a2 != *stringArray );
+        a2 += @"!";
+
+        OODictionary<OOString> d2;
+        d2 <<= stringDict;
+        assert( [d2 isEqualTo:stringDict] && *d2 != stringDict );
+        d2[@"!"] = @"!";
 	}
 
 	if ( allTests ) {
@@ -1262,8 +1278,8 @@ static BOOL allTests = TRUE, memoryManaged = NO, useNetwork = TRUE;
 	if ( allTests ) {
         NSLog( @"array references" );
 
-		NSArray *x = nil;
-		NSMutableArray *m = nil;
+		NSArray *x = [NSArray arrayWithObjects:@"a", nil];
+		NSMutableArray *m = [NSMutableArray arrayWithObjects:@"m", nil];
 		OOReference<NSArray *> y = x, z = y;
 		y = x;
 		z = z;
@@ -1403,6 +1419,10 @@ static BOOL allTests = TRUE, memoryManaged = NO, useNetwork = TRUE;
         assert( c1 == @"2" );
         assert( c2 == @"1" );
         assert( !c3 );
+
+        OOString str = @"aaa bbb";
+        OOStringVars( aa, bb ) = str[@"(\\w+) (\\w+)"];
+        assert( aa == @"aaa" && bb == @"bbb" );
 	}
 
     if ( allTests ) {
@@ -1539,6 +1559,10 @@ static BOOL allTests = TRUE, memoryManaged = NO, useNetwork = TRUE;
 		OOData d1 = xml;
 		OONode n1 = *d1;
 		assert( xml == n1 );
+        NSLog( @"expect an OOWarn here.. CFPropertyListCreateDeepCopy() has it's limitations" );
+        n1 <<= xml;
+        //NSLog( @"%@ -- %@", *xml, *n1 );
+		//assert( n1 == xml );
 
 #if 1
 		n1["john"]["change"] = "diff";

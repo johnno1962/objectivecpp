@@ -5,8 +5,8 @@
  *  Created by John Holdsworth on 01/04/2009.
  *  Copyright 2009 © John Holdsworth. All Rights Reserved.
  *
- *  $Id: //depot/ObjCpp/objcpp.h#104 $
- *  $DateTime: 2013/02/23 06:59:34 $
+ *  $Id: //depot/ObjCpp/objcpp.h#112 $
+ *  $DateTime: 2014/01/14 10:57:19 $
  *
  *  C++ classes to wrap up XCode classes for operator overload of
  *  useful operations such as access to NSArrays and NSDictionary
@@ -76,6 +76,7 @@
 // Used to write code that compiles both with and without ARC
 #ifdef OO_ARC
 #define OO_BRIDGE( _type ) (__bridge _type)
+#define OO_TRANSFER( _type ) (__bridge_transfer _type)
 #define OO_RETAIN( _obj ) _obj
 #define OO_RETAINCOUNT( _obj ) CFGetRetainCount( OO_BRIDGE(CFTypeRef)_obj )
 #define OO_AUTORELEASE( _obj ) _obj
@@ -88,6 +89,7 @@
 #define OO_WEAK _weak
 #else
 #define OO_BRIDGE( _type ) (_type)
+#define OO_TRANSFER( _type ) (_type)
 #define OO_RETAIN( _obj ) [_obj retain]
 #define OO_RETAINCOUNT( _obj ) [_obj retainCount]
 #define OO_AUTORELEASE( _obj ) [_obj autorelease]
@@ -123,7 +125,7 @@
 static struct { BOOL trace; } _objcpp = {NO};
 #define OOTrace if( _objcpp.trace ) NSLog
 #else
-#define OOTrace if(0) NSLog
+#define OOTrace while(0) NSLog
 #endif
 #define OORetain OOTrace
 #define OORelease OOTrace
@@ -134,7 +136,7 @@ static struct { BOOL trace; } _objcpp = {NO};
  */
 
 #ifndef OOWarn
-#ifdef OODEBUG
+#if defined(OODEBUG) || defined(DEBUG)
 #define OOWarn OODump
 #else
 #define OOWarn NSLog
@@ -236,6 +238,7 @@ inline NSRange OORange( NSUInteger start, NSInteger end  ) {
 
 
 // stack traces for debug warnings
+static void OODump( NSString *format, ... ) NS_FORMAT_FUNCTION(1,2);
 static void OODump( NSString *format, ... ) {
 	va_list argp;
     va_start(argp, format);
@@ -312,7 +315,7 @@ class OOReference {
 
 	// initialise ref
 	oo_inline RTYPE init( RTYPE val = OOEmpty ) OO_RETURNS {
-		OOTrace( @"0x%08lx %s: %@", (OOAddress)this, "INIT", val != (id)kCFNull ? (id)val : @"(NULL)" );
+		OOTrace( @"%p %s: %@", this, "INIT", val != (id)kCFNull ? (id)val : @"(NULL)" );
 		ref = nil;
 		return set( val );
 	}
@@ -320,7 +323,7 @@ class OOReference {
 protected:
 	// clear out referrence
 	oo_inline void destruct() {
-		OOTrace( @"0x%08lx %s: 0x%08lx = %@", (OOAddress)this, "DESTRUCT", (OOAddress)ref, ref );
+		OOTrace( @"%p %s: %p = %@", this, "DESTRUCT", ref, ref );
 		rawset( (RTYPE)nil );
 	}
 
@@ -333,12 +336,12 @@ protected:
         RTYPE old = ref;
 		ref = val;
 		if ( val != nil && val != (id)kCFNull ) {
-			OORetain( @"0x%08lx %s#%ld: 0x%08lx = %@", (OOAddress)this, "RETAIN", 
-                     (OOLong)OO_RETAINCOUNT( val ), (OOAddress)val, val );
+			OORetain( @"%p %s#%ld: %p = %@", this, "RETAIN", 
+                     (OOLong)OO_RETAINCOUNT( val ), val, val );
 		}
 		if ( old != nil && old != (id)kCFNull ) {
-			OORelease( @"0x%08lx %s#%ld: 0x%08lx = %@", (OOAddress)this, "RELEASE", 
-                      (OOLong)OO_RETAINCOUNT( old ), (OOAddress)old, old );
+			OORelease( @"%p %s#%ld: %p = %@", this, "RELEASE", 
+                      (OOLong)OO_RETAINCOUNT( old ), old, old );
 			OO_RELEASE( old );
             old = nil;
 		}
@@ -390,7 +393,7 @@ public:
 	oo_inline RTYPE alloc() OO_RETURNS {
 		if ( !*this ) {
 			RTYPE val = [[classOfReference() alloc] init];
-			OOTrace( @"0x%08lx %s %@", (OOAddress)this, "ALLOC", val );
+			OOTrace( @"%p %s %@", this, "ALLOC", val );
 			rawset( val );
 		}
 #ifndef OOCopyImmutable
@@ -405,8 +408,18 @@ public:
 	// copy any immutable objects
 	oo_inline void copy( RTYPE val ) {
 		RTYPE obj = [val mutableCopyWithZone:NULL];
-		OOTrace( @"0x%08lx %s: 0x%08lx -> 0x%08lx = %@", (OOAddress)this, "COPY", (OOAddress)val, (OOAddress)obj, obj );
+		OOTrace( @"%p %s: %p -> %p = %@", this, "COPY", val, obj, obj );
 		rawset( obj );
+	}
+
+    // deep copy any plist
+	oo_inline OOReference &deepcopy( RTYPE val ) {
+		RTYPE obj = OO_TRANSFER(id)CFPropertyListCreateDeepCopy( NULL, OO_BRIDGE(CFPropertyListRef)val, kCFPropertyListMutableContainersAndLeaves );
+		OOTrace( @"%p %s: %p -> %p = %@", this, "DEEPCOPY", val, obj, obj );
+        if ( val && !obj )
+            OOWarn( @"deepcopy failed" );
+		rawset( obj );
+        return *this;
 	}
 
 	// get existing ref
@@ -421,13 +434,15 @@ public:
 	oo_inline RTYPE operator * () const OO_RETURNS { return !*this ? nil : get(); }
 	oo_inline BOOL operator ! () const { return !ref || ref == (id)kCFNull; }
 
-	// assign (mutable) copy from source
+	// assign (mutable) now deep copy of plist from source
 	oo_inline OOReference &operator <<= ( const OOReference &val ) {
-        copy( val.get() );
-        return *this;
+        return deepcopy( val.get() );
+    }
+    oo_inline OOReference &operator <<= ( id val ) {
+        return deepcopy( val );
     }
 
-	// assigment by reference
+	// assigment by referenc
 	oo_inline OOReference &operator = ( const OOReference &val ) { set( val.get() ); return *this; }
 	oo_inline OOReference &operator = ( CFNullRef val ) { set( val ); return *this; }
 	oo_inline OOReference &operator = ( RTYPE val ) { set( val ); return *this; }
@@ -920,6 +935,11 @@ public:
 		va_end( argp );
 	}
 
+    ////oo_inline operator int () const { return !*this ? 0 : (int)[get() count]; }
+    oo_inline OOSlice keys() {
+        return [get() allKeys];
+    }
+
 #ifdef __clang__
     oo_inline OODictionary filter( BOOL (^callback)( id key, ETYPE value ) ) {
         OODictionary out;
@@ -1128,7 +1148,7 @@ public:
 		OO_STRONG id parent = get( NO );
 		if ( !parent ) {
 			parent = [[c alloc] init];
-			OOTrace( @"0x%08lx %s %@", (OOAddress)this, "VIVIFY", parent );
+			OOTrace( @"%p %s %@", this, "VIVIFY", parent );
 			OO_RELEASE( set( parent ) );
 		}
 #if 001
@@ -1150,6 +1170,19 @@ public:
                     root ? root->get() : aref ? aref->get( NO ) : dref->get( NO );
         return parentCache;
 	}
+
+    oo_inline OOArray<ETYPE> array() {
+        return get();
+    }
+    oo_inline OODict<ETYPE> dict() {
+        return get();
+    }
+    oo_inline NSUInteger count() {
+        return [get() count];
+    }
+    oo_inline OOSlice keys() {
+        return [get() allKeys];;
+    }
 
 	// unaries
 	oo_inline ETYPE operator * () const OO_RETURNS { return get(); }
@@ -1295,15 +1328,15 @@ public:
 		if ( arr == (id)kCFNull )
             return nil;
         if ( idx < 0 )
-            OOWarn( @"0x%08lx Excess negative index (%ld) beyond size of array (%ld)",
-                   (OOAddress)this, (OOLong)idx-[arr count], (OOLong)[arr count] );
+            OOWarn( @"%p Excess negative index (%ld) beyond size of array (%ld)",
+                   this, (OOLong)idx-[arr count], (OOLong)[arr count] );
         else if ( idx < [arr count] )
             ret = [arr objectAtIndex:idx];
         else if ( idx == NSNotFound )
             ;
         else if ( warn )
-            OOWarn( @"0x%08lx Array ref (%ld) beyond end of array (%ld)",
-                   (OOAddress)this, (OOLong)idx, (OOLong)[arr count] );
+            OOWarn( @"%p Array ref (%ld) beyond end of array (%ld)",
+                   this, (OOLong)idx, (OOLong)[arr count] );
 		return ret != (id)kCFNull ? ret : nil;
 	}
 	oo_inline virtual id set ( id val ) const OO_RETURNS {
@@ -1312,8 +1345,8 @@ public:
 		if ( val == nil )
 			val = OONoValue;
 		if ( idx < 0 )
-			OOWarn( @"0x%08lx Excess negative index (%ld) beyond size of array (%ld)",
-                   (OOAddress)this, (OOLong)idx-[arr count], (OOLong)[arr count] );
+			OOWarn( @"%p Excess negative index (%ld) beyond size of array (%ld)",
+                   this, (OOLong)idx-[arr count], (OOLong)[arr count] );
 		else if ( idx < count )
 			[arr replaceObjectAtIndex:idx withObject:val];
 		else if ( idx != NSNotFound ) {
@@ -1352,8 +1385,8 @@ public:
 		if ( 0 <= idx && idx < [arr count] )
 			[arr removeObjectAtIndex:idx];
 		else
-			OOWarn( @"0x%08lx Attempt to remove index (%ld) beyond end of array (%ld)",
-                   (OOAddress)this, (OOLong)idx, (OOLong)[arr count] );
+			OOWarn( @"%p Attempt to remove index (%ld) beyond end of array (%ld)",
+                   this, (OOLong)idx, (OOLong)[arr count] );
 		return save;
 	}
 };
@@ -1397,11 +1430,19 @@ protected:
 
 public:
 	oo_inline virtual id get( BOOL warn = YES ) const OO_RETURNS {
+        if ( !this->key ) {
+            OOWarn( @"%p OODictionary get with nil key", this );
+            return nil;
+        }
 		id parent = this->parent( NO ),
             value = parent != (id)kCFNull ? [parent objectForKey:this->key] : nil;
 		return value != (id)kCFNull || 0 ? value : nil;
 	}
 	oo_inline virtual id set( id val ) const OO_RETURNS {
+        if ( !this->key ) {
+            OOWarn( @"%p OODictionary set with nil key", this );
+            return val;
+        }
 		if ( val == nil )
 			val = OONoValue;
 		[this->parent( YES ) setObject:val forKey:this->key];
@@ -1466,8 +1507,8 @@ class OOArraySlice : public OOSubscript<OOArray<ETYPE>,NSMutableArray,ETYPE> {
         if ( slice.length == NSNotFound )
 			slice.length = parentCount-slice.location;
         else if ( slice.length > parentCount-slice.location ) {
-            OOWarn( @"0x%08lx Slice length (%ld) beyond availble (%ld-%ld)",
-                   (OOAddress)this, (OOLong)slice.length, (OOLong)parentCount, (OOLong)slice.location );
+            OOWarn( @"%p Slice length (%ld) beyond availble (%ld-%ld)",
+                   this, (OOLong)slice.length, (OOLong)parentCount, (OOLong)slice.location );
             slice.length = parentCount-slice.location;
         }
 	}

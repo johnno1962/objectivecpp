@@ -77,6 +77,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a34cca2259020db310d50c5086a43e858"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad715f9b65096c4e682254f9af15a77fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_o_reference.html#ad715f9b65096c4e682254f9af15a77fa">copy</a> (RTYPE val)</td></tr>
 <tr class="separator:ad715f9b65096c4e682254f9af15a77fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f9f12bcdf803b7e0ea2d0623701f4dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="el" href="class_o_o_reference.html">OOReference</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_o_reference.html#a4f9f12bcdf803b7e0ea2d0623701f4dc">deepcopy</a> (RTYPE val)</td></tr>
+<tr class="separator:a4f9f12bcdf803b7e0ea2d0623701f4dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83034c253c737fa7e902914dd2f6745e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> RTYPE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_o_reference.html#a83034c253c737fa7e902914dd2f6745e">get</a> () const <a class="el" href="objcpp_8h.html#aa0971ce3106bfb52fe0d50d1c179a9d2">OO_RETURNS</a></td></tr>
 <tr class="separator:a83034c253c737fa7e902914dd2f6745e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a516abdbb6e2615c0c2b6144e0d326103"><td class="memItemLeft" align="right" valign="top"><a class="el" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_o_reference.html#a516abdbb6e2615c0c2b6144e0d326103">operator RTYPE</a> () const </td></tr>
@@ -91,6 +93,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa6f684ea72ca44009f6bfa54e4cbbab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd7bdf09163b0988aca7b1b6ef6802fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="el" href="class_o_o_reference.html">OOReference</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_o_reference.html#afd7bdf09163b0988aca7b1b6ef6802fd">operator&lt;&lt;=</a> (const <a class="el" href="class_o_o_reference.html">OOReference</a> &amp;val)</td></tr>
 <tr class="separator:afd7bdf09163b0988aca7b1b6ef6802fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3af22bdb384a5876b6f91b27db4daf5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="el" href="class_o_o_reference.html">OOReference</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_o_reference.html#aa3af22bdb384a5876b6f91b27db4daf5">operator&lt;&lt;=</a> (id val)</td></tr>
+<tr class="separator:aa3af22bdb384a5876b6f91b27db4daf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a27054d7666ba5ce0626b2beed91c49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="el" href="class_o_o_reference.html">OOReference</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_o_reference.html#a9a27054d7666ba5ce0626b2beed91c49">operator=</a> (const <a class="el" href="class_o_o_reference.html">OOReference</a> &amp;val)</td></tr>
 <tr class="separator:a9a27054d7666ba5ce0626b2beed91c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0aabec0fd8a0c72e11571858038f2ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="el" href="class_o_o_reference.html">OOReference</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_o_reference.html#ad0aabec0fd8a0c72e11571858038f2ab">operator=</a> (CFNullRef val)</td></tr>
@@ -160,7 +164,7 @@ class OOReference&lt; RTYPE &gt;</h3>
 ref is discarded when object destructed on function exit.
  } 
  </pre> 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00305">305</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00308">308</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5e2a72f33347d36986e88cf2c85a6982"></a>
 <div class="memitem">
@@ -185,7 +189,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00377">377</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00380">380</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -215,7 +219,7 @@ template&lt;typename RTYPE&gt; </div>
 
 <p>oo_inline OOReference( id obj ) { init( obj ); } </p>
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00379">379</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00382">382</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -243,7 +247,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00380">380</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00383">383</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -271,7 +275,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00381">381</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00384">384</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -299,7 +303,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00382">382</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00385">385</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -327,7 +331,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00383">383</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00386">386</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -354,7 +358,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00457">457</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00472">472</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -382,7 +386,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00390">390</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00393">393</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -409,7 +413,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00371">371</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00374">374</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -436,7 +440,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00309">309</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00312">312</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +468,35 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00406">406</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00409">409</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4f9f12bcdf803b7e0ea2d0623701f4dc"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename RTYPE&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="el" href="class_o_o_reference.html">OOReference</a>&amp; <a class="el" href="class_o_o_reference.html">OOReference</a>&lt; RTYPE &gt;::deepcopy </td>
+          <td>(</td>
+          <td class="paramtype">RTYPE&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00416">416</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -491,7 +523,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00322">322</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00325">325</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -518,7 +550,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00413">413</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00426">426</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -546,7 +578,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00314">314</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00317">317</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -573,7 +605,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00367">367</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00370">370</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -600,7 +632,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00418">418</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00431">431</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -627,7 +659,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00422">422</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00435">435</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -655,7 +687,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00438">438</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00453">453</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -682,7 +714,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00420">420</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00433">433</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -709,7 +741,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00421">421</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00434">434</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -739,7 +771,7 @@ template&lt;typename RTYPE&gt; </div>
 
 <p>for <a class="el" href="class_o_o_array.html">OOArray&lt;id&gt;</a> </p>
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00441">441</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00456">456</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -766,7 +798,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00419">419</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00432">432</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -794,7 +826,35 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00425">425</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00438">438</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa3af22bdb384a5876b6f91b27db4daf5"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename RTYPE&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="el" href="class_o_o_reference.html">OOReference</a>&amp; <a class="el" href="class_o_o_reference.html">OOReference</a>&lt; RTYPE &gt;::operator&lt;&lt;= </td>
+          <td>(</td>
+          <td class="paramtype">id&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00441">441</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -822,7 +882,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00431">431</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00446">446</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -850,7 +910,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00432">432</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00447">447</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -878,7 +938,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00433">433</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00448">448</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -906,7 +966,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00434">434</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00449">449</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -934,7 +994,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00437">437</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00452">452</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -962,7 +1022,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00447">447</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00462">462</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -989,7 +1049,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00449">449</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00464">464</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -1016,7 +1076,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00385">385</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00388">388</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -1044,7 +1104,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00331">331</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00334">334</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -1072,7 +1132,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00349">349</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00352">352</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -1100,7 +1160,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00354">354</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00357">357</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -1125,7 +1185,7 @@ template&lt;typename RTYPE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00306">306</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
+<p>Definition at line <a class="el" href="objcpp_8h_source.html#l00309">309</a> of file <a class="el" href="objcpp_8h_source.html">objcpp.h</a>.</p>
 
 </div>
 </div>
@@ -1135,7 +1195,7 @@ template&lt;typename RTYPE&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 9 2014 20:29:14 for Objective-C++ Preprocessor by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 14 2014 14:28:47 for Objective-C++ Preprocessor by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

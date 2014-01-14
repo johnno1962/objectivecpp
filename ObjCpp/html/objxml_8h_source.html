@@ -307,7 +307,7 @@
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordflow">if</span> ( char0 != <span class="charliteral">&#39;@&#39;</span> &amp;&amp; char0 != <span class="charliteral">&#39;.&#39;</span> ) {</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <a class="code" href="objcpp_8h.html#aa71d43d536418b90e3a25dec625c8c24">OOStringArray</a> path = Key / <span class="stringliteral">@&quot;/&quot;</span>;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            NSInteger pmax = [path count]-1, firstCharOfLast = [*path[-1] length] ? (*path[-1])[0] : 0;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            NSInteger pmax = [path <a class="code" href="class_o_o_subscript.html#a44ebf7d1119356ae7b01264ca403b613">count</a>]-1, firstCharOfLast = [*path[-1] length] ? (*path[-1])[0] : 0;</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordflow">if</span> ( firstCharOfLast != <span class="charliteral">&#39;@&#39;</span> &amp;&amp; firstCharOfLast != <span class="charliteral">&#39;.&#39;</span> ) { <span class="comment">//// &amp;&amp; firstCharOfLast != &#39;*&#39; ) {</span></div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment"></span>                path += kOONodeText;</div>
@@ -411,7 +411,7 @@
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keywordflow">return</span> OONodeArraySub( (OODictionarySub&lt;NSMutableArray*&gt; *)children, 0 );</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> BOOL <a class="code" href="class_o_o_reference.html#aa6f684ea72ca44009f6bfa54e4cbbab0">operator ! </a>() {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keywordflow">return</span> count() == 0;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_o_o_subscript.html#a44ebf7d1119356ae7b01264ca403b613">count</a>() == 0;</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    }</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="objxml_8h.html#a6775d5d8644e89ad22d44164fc1c788d">OONodeArray</a> nodes()<span class="keyword"> const </span>{</div>
@@ -435,7 +435,7 @@
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_o_o_node.html#a6d256f3a200488d6c96bb271d18b9cee">text</a>();</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    }</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> NSInteger count()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> NSInteger <a class="code" href="class_o_o_subscript.html#a44ebf7d1119356ae7b01264ca403b613">count</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordflow">return</span> [nodes() count];</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    }</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="comment">//oo_inline operator int () const {</span></div>
@@ -868,7 +868,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 9 2014 20:29:13 for Objective-C++ Preprocessor by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 14 2014 14:28:46 for Objective-C++ Preprocessor by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

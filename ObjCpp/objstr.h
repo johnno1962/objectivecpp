@@ -5,8 +5,8 @@
  *  Created by John Holdsworth on 01/04/2009.
  *  Copyright 2009 © John Holdsworth. All Rights Reserved.
  *
- *  $Id: //depot/ObjCpp/objstr.h#101 $
- *  $DateTime: 2014/01/09 20:28:57 $
+ *  $Id: //depot/ObjCpp/objstr.h#104 $
+ *  $DateTime: 2014/01/14 12:25:23 $
  *
  *  C++ classes to wrap up XCode classes for operator overload of
  *  useful operations such as access to NSArrays and NSDictionary
@@ -1167,15 +1167,15 @@ public:
     oo_inline OOFile() {
     }
     oo_inline OOFile( NSURL *url ) : OOURL( url ) {}
-	oo_inline OOFile( cOOString path ) : OOURL( (NSURL *)0 ) {
-		setPath( path );
+	oo_inline OOFile( cOOString path, BOOL isDir = NO ) : OOURL( (NSURL *)0 ) {
+		setPath( path, isDir );
 	}
 	oo_inline OOFile( cOOString name, cOOString type ) : OOURL( (NSURL *)0 ){
 		setPath( [[NSBundle mainBundle] pathForResource:name ofType:type] );
 	}
-	oo_inline OOFile &setPath( cOOString path ) {
+	oo_inline OOFile &setPath( cOOString path, BOOL isDir = NO ) {
 		if ( *path )
-			rawset( [[NSURL alloc] initFileURLWithPath:path.get()] );
+			rawset( [[NSURL alloc] initFileURLWithPath:path.get() isDirectory:isDir] );
         return *this;
 	}
 	oo_inline OOString path() const {
@@ -1308,11 +1308,13 @@ class OODefaultsSub : public OODictionarySub<OOString> {
 		return OODictionarySub<OOString>::set( value );
 	}
 public:
-	oo_inline OODefaultsSub &operator = ( OOString val ) { set( val ); return *this; }
+	oo_inline OODefaultsSub &operator = ( cOOString val ) { set( val.get() ); return *this; }
 	oo_inline OODefaultsSub &operator = ( CFStringRef val ) { set( OO_BRIDGE(id)val ); return *this; }
 	oo_inline OODefaultsSub &operator = ( NSString *val ) { set( val ); return *this; }
 	oo_inline OODefaultsSub &operator = ( NSArray *val ) { set( val ); return *this; }
 	oo_inline OODefaultsSub &operator = ( NSDictionary *val ) { set( val ); return *this; }
+    oo_inline OODefaultsSub &operator = ( const OORef<NSMutableArray *> &val ) { set( val.get() ); return *this; }
+    oo_inline OODefaultsSub &operator = ( const OORef<NSMutableDictionary *> &val ) { set( val.get() ); return *this; }
 	oo_inline OODefaultsSub &operator = ( long long val ) { set( [[NSNumber numberWithLongLong:val] stringValue] ); return *this; }
 	oo_inline OODefaultsSub &operator = ( double val ) { set( [[NSNumber numberWithDouble:val] stringValue] ); return *this; }
 	oo_inline OODefaultsSub &operator = ( float val ) { set( [[NSNumber numberWithFloat:val] stringValue] ); return *this; }
@@ -1351,7 +1353,7 @@ class OODefaults : public OODictionary<OOString> {
 public:
 	oo_inline OODefaults() {
 		OOPool pool;
-		rawset( [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] mutableCopy] );
+        *this <<= [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
 	}
 	oo_inline OODefaultsSub operator[] ( id key ) const {
 		return OODefaultsSub( this, key );
@@ -1512,7 +1514,7 @@ public:
 	}
 
 	oo_inline operator NSNumber * () const { return get(); } 
-	oo_inline operator double () const { return [get() doubleValue]; } 
+	oo_inline operator double () const { return [get() doubleValue]; }
 	oo_inline double operator * () const { return [get() doubleValue]; }
 
 	oo_inline OONumber &operator = ( const OONumber &val ) { set( val.get() ); return *this; }

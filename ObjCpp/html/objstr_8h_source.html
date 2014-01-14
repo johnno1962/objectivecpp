@@ -57,8 +57,8 @@
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  Created by John Holdsworth on 01/04/2009.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  Copyright 2009 © John Holdsworth. All Rights Reserved.</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *  $Id: //depot/ObjCpp/objstr.h#101 $</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *  $DateTime: 2014/01/09 20:28:57 $</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *  $Id: //depot/ObjCpp/objstr.h#104 $</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *  $DateTime: 2014/01/14 12:25:23 $</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *  C++ classes to wrap up XCode classes for operator overload of</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  useful operations such as access to NSArrays and NSDictionary</span></div>
@@ -1219,15 +1219,15 @@
 <div class="line"><a name="l01167"></a><span class="lineno"><a class="code" href="class_o_o_file.html#a16febba97e850ea8fa66722bd1fc5e81"> 1167</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_file.html#a16febba97e850ea8fa66722bd1fc5e81">OOFile</a>() {</div>
 <div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;    }</div>
 <div class="line"><a name="l01169"></a><span class="lineno"><a class="code" href="class_o_o_file.html#a08a3125f5852aae33ded53ddb4108585"> 1169</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_file.html#a08a3125f5852aae33ded53ddb4108585">OOFile</a>( NSURL *url ) : <a class="code" href="class_o_o_u_r_l.html">OOURL</a>( url ) {}</div>
-<div class="line"><a name="l01170"></a><span class="lineno"><a class="code" href="class_o_o_file.html#a248bee805f6db1dab8dd8c815072f5ce"> 1170</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_file.html#a248bee805f6db1dab8dd8c815072f5ce">OOFile</a>( <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> path ) : <a class="code" href="class_o_o_u_r_l.html">OOURL</a>( (NSURL *)0 ) {</div>
-<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;        setPath( path );</div>
+<div class="line"><a name="l01170"></a><span class="lineno"><a class="code" href="class_o_o_file.html#a3d758bf0bbbe066b37ba109e7ec454cb"> 1170</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_file.html#a3d758bf0bbbe066b37ba109e7ec454cb">OOFile</a>( <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> path, BOOL isDir = NO ) : <a class="code" href="class_o_o_u_r_l.html">OOURL</a>( (NSURL *)0 ) {</div>
+<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;        setPath( path, isDir );</div>
 <div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;    }</div>
 <div class="line"><a name="l01173"></a><span class="lineno"><a class="code" href="class_o_o_file.html#a13a8b49d4fd972921f028890ce66b0a5"> 1173</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_file.html#a13a8b49d4fd972921f028890ce66b0a5">OOFile</a>( <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> name, <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> type ) : <a class="code" href="class_o_o_u_r_l.html">OOURL</a>( (NSURL *)0 ){</div>
 <div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;        setPath( [[NSBundle mainBundle] pathForResource:name ofType:type] );</div>
 <div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;    }</div>
-<div class="line"><a name="l01176"></a><span class="lineno"><a class="code" href="class_o_o_file.html#a519cc210740a96f3bf2713f6b655f7e7"> 1176</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_file.html">OOFile</a> &amp;<a class="code" href="class_o_o_file.html#a519cc210740a96f3bf2713f6b655f7e7">setPath</a>( <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> path ) {</div>
+<div class="line"><a name="l01176"></a><span class="lineno"><a class="code" href="class_o_o_file.html#af8c10fa3b18a8bcf53c08c555d38aaa2"> 1176</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_file.html">OOFile</a> &amp;<a class="code" href="class_o_o_file.html#af8c10fa3b18a8bcf53c08c555d38aaa2">setPath</a>( <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> path, BOOL isDir = NO ) {</div>
 <div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;        <span class="keywordflow">if</span> ( *path )</div>
-<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;            rawset( [[NSURL alloc] initFileURLWithPath:path.get()] );</div>
+<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;            rawset( [[NSURL alloc] initFileURLWithPath:path.get() isDirectory:isDir] );</div>
 <div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;    }</div>
 <div class="line"><a name="l01181"></a><span class="lineno"><a class="code" href="class_o_o_file.html#abb2de7ce1f71e7735049e281c6bbbd9a"> 1181</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_string.html">OOString</a> <a class="code" href="class_o_o_file.html#abb2de7ce1f71e7735049e281c6bbbd9a">path</a>()<span class="keyword"> const </span>{</div>
@@ -1360,265 +1360,267 @@
 <div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;<span class="comment"></span>        <span class="keywordflow">return</span> OODictionarySub&lt;OOString&gt;::set( value );</div>
 <div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160;    }</div>
 <div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <a class="code" href="class_o_o_string.html">OOString</a> val ) { <span class="keyword">set</span>( val ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> val ) { <span class="keyword">set</span>( val.get() ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
 <div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( CFStringRef val ) { <span class="keyword">set</span>( <a class="code" href="objcpp_8h.html#a80e18a8ea95e5008e28c3fbbd8418a42">OO_BRIDGE</a>(<span class="keywordtype">id</span>)val ); return *this; }</div>
 <div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( NSString *val ) { <span class="keyword">set</span>( val ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
 <div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( NSArray *val ) { <span class="keyword">set</span>( val ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
 <div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( NSDictionary *val ) { <span class="keyword">set</span>( val ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
-<div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keywordtype">long</span> <span class="keywordtype">long</span> val ) { <span class="keyword">set</span>( [[NSNumber numberWithLongLong:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
-<div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keywordtype">double</span> val ) { <span class="keyword">set</span>( [[NSNumber numberWithDouble:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
-<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keywordtype">float</span> val ) { <span class="keyword">set</span>( [[NSNumber numberWithFloat:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
-<div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keywordtype">int</span> val ) { <span class="keyword">set</span>( [[NSNumber numberWithInt:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
-<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( BOOL val ) { <span class="keyword">set</span>( [[NSNumber numberWithBool:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
-<div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;</div>
-<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> <span class="keywordtype">long</span> long () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() longLongValue]; }</div>
-<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> double () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() doubleValue]; }</div>
-<div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> float () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() floatValue]; }</div>
-<div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> BOOL () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() boolValue]; }</div>
-<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> int () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() intValue]; }</div>
-<div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> NSDictionary * () { <span class="keywordflow">return</span> <span class="keyword">get</span>(); }</div>
-<div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> NSString * () { <span class="keywordflow">return</span> <span class="keyword">get</span>(); }</div>
-<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> NSArray * () { <span class="keywordflow">return</span> <span class="keyword">get</span>(); }</div>
-<div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;</div>
-<div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keywordtype">long</span> val ) { <span class="keyword">set</span>( [[NSNumber numberWithLong:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
-<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> long () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() intValue]; }</div>
-<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;</div>
-<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_string.html">OOString</a> operator ~ () {</div>
-<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];</div>
-<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;        <span class="keywordflow">return</span> OODictionarySub&lt;OOString&gt;::operator ~ ();</div>
-<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;    }</div>
-<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;};</div>
-<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;<span class="comment"> Binds defaults to an OODictionary.</span></div>
-<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;</div>
-<div class="line"><a name="l01344"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html"> 1344</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_o_defaults.html">OODefaults</a> : <span class="keyword">public</span> <a class="code" href="class_o_o_dictionary.html">OODictionary&lt;OOString&gt;</a> {</div>
-<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;<span class="preprocessor">#ifdef __OBJC_GC__</span></div>
-<div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;<span class="preprocessor"></span>    NSMutableDictionary *ref3;</div>
-<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">virtual</span> <span class="keywordtype">id</span> rawset( NSMutableDictionary *val ) <a class="code" href="objcpp_8h.html#aa0971ce3106bfb52fe0d50d1c179a9d2">OO_RETURNS</a> {</div>
-<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_o_o_reference.html#aff1f3671e2fb88f17f921a1d688e317d">OOReference&lt;NSMutableDictionary *&gt;::rawset</a>( ref3 = val );</div>
-<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;    }</div>
-<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;<span class="preprocessor"></span><span class="keyword">public</span>:</div>
-<div class="line"><a name="l01352"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#a0b56b98d851072048d80f5b08d9751f8"> 1352</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_defaults.html#a0b56b98d851072048d80f5b08d9751f8">OODefaults</a>() {</div>
-<div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;        <a class="code" href="class_o_o_pool.html">OOPool</a> pool;</div>
-<div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;        rawset( [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] mutableCopy] );</div>
-<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;    }</div>
-<div class="line"><a name="l01356"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#aa78f53e947accc3527a71bdf51d2ad31"> 1356</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub operator[] ( <span class="keywordtype">id</span> key )<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;        <span class="keywordflow">return</span> OODefaultsSub( <span class="keyword">this</span>, key );</div>
-<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;    }</div>
-<div class="line"><a name="l01359"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#a039c946482a62977dabd9ed75cea1b5b"> 1359</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub operator[] ( <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> key )<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;        <span class="keywordflow">return</span> OODefaultsSub( <span class="keyword">this</span>, key );</div>
-<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;    }</div>
-<div class="line"><a name="l01362"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#af26754c8c9948e81bf98ccb0464e9dd5"> 1362</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub operator [] ( <span class="keyword">const</span> CFStringRef sub )<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;        <span class="keywordflow">return</span> (*<span class="keyword">this</span>)[<a class="code" href="objcpp_8h.html#a80e18a8ea95e5008e28c3fbbd8418a42">OO_BRIDGE</a>(<span class="keywordtype">id</span>)sub];</div>
-<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;    }</div>
-<div class="line"><a name="l01365"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#a55cbbcb9c33b409fdc9ca4316d405970"> 1365</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keywordtype">void</span> <a class="code" href="class_o_o_defaults.html#a55cbbcb9c33b409fdc9ca4316d405970">sync</a>() {</div>
-<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;        [[NSUserDefaults standardUserDefaults] synchronize];</div>
-<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;    }</div>
-<div class="line"><a name="l01368"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#a220a2d56bbd7298c6ac18769d337820a"> 1368</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_defaults.html#a220a2d56bbd7298c6ac18769d337820a">~OODefaults</a>()  {</div>
-<div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;        sync();</div>
-<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;    }</div>
-<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;};</div>
-<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;<span class="comment"> Binds application&#39;s Info.plist to an OODictionary.</span></div>
-<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;</div>
-<div class="line"><a name="l01377"></a><span class="lineno"><a class="code" href="class_o_o_info.html"> 1377</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_o_info.html">OOInfo</a> : <span class="keyword">public</span> <a class="code" href="class_o_o_dictionary.html">OODictionary&lt;OOString&gt;</a> {</div>
-<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l01379"></a><span class="lineno"><a class="code" href="class_o_o_info.html#a7ac1aacc3da54b8a9f3018d79dba00c5"> 1379</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_info.html#a7ac1aacc3da54b8a9f3018d79dba00c5">OOInfo</a>( NSBundle *bundle = [NSBundle mainBundle] ) {</div>
-<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;        <span class="keyword">set</span>( (NSMutableDictionary *)[bundle infoDictionary] );</div>
-<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;    }</div>
-<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;};</div>
-<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;<span class="comment"> Wrapper for execution of command</span></div>
-<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;</div>
-<div class="line"><a name="l01388"></a><span class="lineno"><a class="code" href="class_o_o_task.html"> 1388</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_o_task.html">OOTask</a> {</div>
-<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l01390"></a><span class="lineno"><a class="code" href="class_o_o_task.html#aa30171f7e0df98f54606e67b1f124aea"> 1390</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_o_o_task.html#aa30171f7e0df98f54606e67b1f124aea">standardInput</a>, pid;</div>
-<div class="line"><a name="l01391"></a><span class="lineno"><a class="code" href="class_o_o_task.html#aefc670dba937858127ecefa680465825"> 1391</a></span>&#160;    FILE *<a class="code" href="class_o_o_task.html#aefc670dba937858127ecefa680465825">exec</a>( <a class="code" href="objcpp_8h.html#a0e118c344d477997a1710a88a3a1bbaf">cOOStringArray</a> command ) {</div>
-<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;        <span class="keywordtype">char</span> <span class="keyword">const</span> *argv[100], *envp[1000], **eptr = envp;</div>
-<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;</div>
-<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i=0 ; i&lt;command ; i++ )</div>
-<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;            argv[i] = command[i];</div>
-<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;        argv[command] = NULL;</div>
-<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;</div>
-<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;        <span class="keywordtype">int</span> input[2], output[2];</div>
-<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;        <span class="keywordflow">if</span> ( pipe( input ) &lt; 0 || pipe( output ) &lt; 0 )</div>
-<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;            NSLog( <span class="stringliteral">@&quot;OOTask::exec - pipe() problem&quot;</span> );</div>
-<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;</div>
-<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;        <span class="keywordflow">if</span> ( (pid = fork()) == 0 ) {</div>
+<div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keyword">const</span> OORef&lt;NSMutableArray *&gt; &amp;val ) { <span class="keyword">set</span>( val.get() ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keyword">const</span> OORef&lt;NSMutableDictionary *&gt; &amp;val ) { <span class="keyword">set</span>( val.get() ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keywordtype">long</span> <span class="keywordtype">long</span> val ) { <span class="keyword">set</span>( [[NSNumber numberWithLongLong:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keywordtype">double</span> val ) { <span class="keyword">set</span>( [[NSNumber numberWithDouble:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keywordtype">float</span> val ) { <span class="keyword">set</span>( [[NSNumber numberWithFloat:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keywordtype">int</span> val ) { <span class="keyword">set</span>( [[NSNumber numberWithInt:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( BOOL val ) { <span class="keyword">set</span>( [[NSNumber numberWithBool:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;</div>
+<div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> <span class="keywordtype">long</span> long () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() longLongValue]; }</div>
+<div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> double () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() doubleValue]; }</div>
+<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> float () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() floatValue]; }</div>
+<div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> BOOL () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() boolValue]; }</div>
+<div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> int () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() intValue]; }</div>
+<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> NSDictionary * () { <span class="keywordflow">return</span> <span class="keyword">get</span>(); }</div>
+<div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> NSString * () { <span class="keywordflow">return</span> <span class="keyword">get</span>(); }</div>
+<div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> NSArray * () { <span class="keywordflow">return</span> <span class="keyword">get</span>(); }</div>
+<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;</div>
+<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub &amp;operator = ( <span class="keywordtype">long</span> val ) { <span class="keyword">set</span>( [[NSNumber numberWithLong:val] stringValue] ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> long () { <span class="keywordflow">return</span> [<span class="keyword">get</span>() intValue]; }</div>
+<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;</div>
+<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_string.html">OOString</a> operator ~ () {</div>
+<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];</div>
+<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;        <span class="keywordflow">return</span> OODictionarySub&lt;OOString&gt;::operator ~ ();</div>
+<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;    }</div>
+<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;};</div>
+<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;<span class="comment"> Binds defaults to an OODictionary.</span></div>
+<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;</div>
+<div class="line"><a name="l01346"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html"> 1346</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_o_defaults.html">OODefaults</a> : <span class="keyword">public</span> <a class="code" href="class_o_o_dictionary.html">OODictionary&lt;OOString&gt;</a> {</div>
+<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;<span class="preprocessor">#ifdef __OBJC_GC__</span></div>
+<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;<span class="preprocessor"></span>    NSMutableDictionary *ref3;</div>
+<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">virtual</span> <span class="keywordtype">id</span> rawset( NSMutableDictionary *val ) <a class="code" href="objcpp_8h.html#aa0971ce3106bfb52fe0d50d1c179a9d2">OO_RETURNS</a> {</div>
+<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_o_o_reference.html#aff1f3671e2fb88f17f921a1d688e317d">OOReference&lt;NSMutableDictionary *&gt;::rawset</a>( ref3 = val );</div>
+<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;    }</div>
+<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;<span class="preprocessor"></span><span class="keyword">public</span>:</div>
+<div class="line"><a name="l01354"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#a0b56b98d851072048d80f5b08d9751f8"> 1354</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_defaults.html#a0b56b98d851072048d80f5b08d9751f8">OODefaults</a>() {</div>
+<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;        <a class="code" href="class_o_o_pool.html">OOPool</a> pool;</div>
+<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;        *<span class="keyword">this</span> &lt;&lt;= [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];</div>
+<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;    }</div>
+<div class="line"><a name="l01358"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#aa78f53e947accc3527a71bdf51d2ad31"> 1358</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub operator[] ( <span class="keywordtype">id</span> key )<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;        <span class="keywordflow">return</span> OODefaultsSub( <span class="keyword">this</span>, key );</div>
+<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;    }</div>
+<div class="line"><a name="l01361"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#a039c946482a62977dabd9ed75cea1b5b"> 1361</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub operator[] ( <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> key )<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;        <span class="keywordflow">return</span> OODefaultsSub( <span class="keyword">this</span>, key );</div>
+<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;    }</div>
+<div class="line"><a name="l01364"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#af26754c8c9948e81bf98ccb0464e9dd5"> 1364</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> OODefaultsSub operator [] ( <span class="keyword">const</span> CFStringRef sub )<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;        <span class="keywordflow">return</span> (*<span class="keyword">this</span>)[<a class="code" href="objcpp_8h.html#a80e18a8ea95e5008e28c3fbbd8418a42">OO_BRIDGE</a>(<span class="keywordtype">id</span>)sub];</div>
+<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;    }</div>
+<div class="line"><a name="l01367"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#a55cbbcb9c33b409fdc9ca4316d405970"> 1367</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keywordtype">void</span> <a class="code" href="class_o_o_defaults.html#a55cbbcb9c33b409fdc9ca4316d405970">sync</a>() {</div>
+<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;        [[NSUserDefaults standardUserDefaults] synchronize];</div>
+<div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;    }</div>
+<div class="line"><a name="l01370"></a><span class="lineno"><a class="code" href="class_o_o_defaults.html#a220a2d56bbd7298c6ac18769d337820a"> 1370</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_defaults.html#a220a2d56bbd7298c6ac18769d337820a">~OODefaults</a>()  {</div>
+<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;        sync();</div>
+<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;    }</div>
+<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;};</div>
+<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;<span class="comment"> Binds application&#39;s Info.plist to an OODictionary.</span></div>
+<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;</div>
+<div class="line"><a name="l01379"></a><span class="lineno"><a class="code" href="class_o_o_info.html"> 1379</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_o_info.html">OOInfo</a> : <span class="keyword">public</span> <a class="code" href="class_o_o_dictionary.html">OODictionary&lt;OOString&gt;</a> {</div>
+<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l01381"></a><span class="lineno"><a class="code" href="class_o_o_info.html#a7ac1aacc3da54b8a9f3018d79dba00c5"> 1381</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_info.html#a7ac1aacc3da54b8a9f3018d79dba00c5">OOInfo</a>( NSBundle *bundle = [NSBundle mainBundle] ) {</div>
+<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;        <span class="keyword">set</span>( (NSMutableDictionary *)[bundle infoDictionary] );</div>
+<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;    }</div>
+<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;};</div>
+<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;<span class="comment"> Wrapper for execution of command</span></div>
+<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;</div>
+<div class="line"><a name="l01390"></a><span class="lineno"><a class="code" href="class_o_o_task.html"> 1390</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_o_task.html">OOTask</a> {</div>
+<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l01392"></a><span class="lineno"><a class="code" href="class_o_o_task.html#aa30171f7e0df98f54606e67b1f124aea"> 1392</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_o_o_task.html#aa30171f7e0df98f54606e67b1f124aea">standardInput</a>, pid;</div>
+<div class="line"><a name="l01393"></a><span class="lineno"><a class="code" href="class_o_o_task.html#aefc670dba937858127ecefa680465825"> 1393</a></span>&#160;    FILE *<a class="code" href="class_o_o_task.html#aefc670dba937858127ecefa680465825">exec</a>( <a class="code" href="objcpp_8h.html#a0e118c344d477997a1710a88a3a1bbaf">cOOStringArray</a> command ) {</div>
+<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;        <span class="keywordtype">char</span> <span class="keyword">const</span> *argv[100], *envp[1000], **eptr = envp;</div>
+<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;</div>
+<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i=0 ; i&lt;command ; i++ )</div>
+<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;            argv[i] = command[i];</div>
+<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;        argv[command] = NULL;</div>
+<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;</div>
+<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;        <span class="keywordtype">int</span> input[2], output[2];</div>
+<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;        <span class="keywordflow">if</span> ( pipe( input ) &lt; 0 || pipe( output ) &lt; 0 )</div>
+<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;            NSLog( <span class="stringliteral">@&quot;OOTask::exec - pipe() problem&quot;</span> );</div>
 <div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;</div>
-<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;            FILE *fp = popen( <span class="stringliteral">&quot;/usr/bin/perl -e &#39;print \&quot;$_=$ENV{$_}\\n\&quot; foreach keys %ENV; exit 99;&#39;&quot;</span>, <span class="stringliteral">&quot;r&quot;</span> );</div>
-<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;            <span class="keywordflow">if</span> ( fp ) {</div>
-<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;                <span class="keywordtype">char</span> line[10000];</div>
-<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;                <span class="keywordflow">while</span>( fp &amp;&amp; fgets( line, <span class="keyword">sizeof</span> line, fp ) ) {</div>
-<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;                    line[strlen(line)-1] = <span class="charliteral">&#39;\000&#39;</span>;</div>
-<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;                    *eptr++ = strdup(line);</div>
-<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;                }</div>
-<div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160;                <span class="keywordflow">if</span> ( pclose( fp )&gt;&gt;8 != 99 )</div>
-<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;                    exit( 99 );</div>
-<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;            }</div>
-<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;            *eptr++ = NULL;</div>
-<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;</div>
-<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;            <span class="comment">// close parent pipes</span></div>
-<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;            close( input[1] );</div>
-<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;            close( output[0] );</div>
-<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160;</div>
-<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;            <span class="comment">// setup stdin/stdout/stderr</span></div>
-<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;            close( 0 ); dup( input[0] ); close( input[0] );</div>
-<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;            close( 1 ); dup( output[1] );</div>
-<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;            close( 2 ); dup( output[1] ); close( output[1] );</div>
-<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;</div>
-<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;            <span class="keywordflow">if</span> ( execve( argv[0], (<span class="keywordtype">char</span> * <span class="keyword">const</span> *)argv, (<span class="keywordtype">char</span> * <span class="keyword">const</span> *)envp ) &lt; 0 )</div>
-<div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160;                NSLog( <span class="stringliteral">@&quot;OOTask::exec - execve failed&quot;</span> );</div>
-<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;            exit(1);</div>
-<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;        }</div>
-<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;</div>
-<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;        close( input[0] );</div>
-<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;        close( output[1] );</div>
-<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;</div>
-<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;        standardInput = input[1];</div>
-<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;        <span class="keywordflow">return</span> fdopen( output[0], <span class="stringliteral">&quot;r&quot;</span> );</div>
-<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;    }</div>
-<div class="line"><a name="l01436"></a><span class="lineno"><a class="code" href="class_o_o_task.html#aa4cce8714b815c9f0ae8efbe94bb9320"> 1436</a></span>&#160;    ssize_t <a class="code" href="class_o_o_task.html#aa4cce8714b815c9f0ae8efbe94bb9320">send</a>( <a class="code" href="objcpp_8h.html#ad896c998e9491af6a27c89afb7f63b3e">OOData</a> input ) {</div>
-<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;        ssize_t wrote = write( standardInput, [input bytes], [input length] );</div>
-<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;        close( standardInput );</div>
-<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;        standardInput = -1;</div>
-<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;        <span class="keywordflow">return</span> wrote;</div>
-<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;    }</div>
-<div class="line"><a name="l01442"></a><span class="lineno"><a class="code" href="class_o_o_task.html#a8d887748a03b5a2008d47f2789e8faa1"> 1442</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_o_o_task.html#a8d887748a03b5a2008d47f2789e8faa1">wait</a>() {</div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;        <span class="keywordflow">if</span> ( standardInput &gt;= 0 )</div>
-<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;            close( standardInput );</div>
-<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;        <span class="keywordtype">int</span> status = 1;</div>
-<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;        <span class="keywordflow">if</span> ( waitpid(pid,&amp;status,0) &lt; 0 )</div>
-<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;            NSLog( <span class="stringliteral">@&quot;OOTask::exec - wait problem&quot;</span> );</div>
-<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;        <span class="keywordflow">return</span> status;</div>
-<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;    }</div>
-<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;};</div>
-<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;</div>
-<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;<span class="preprocessor">#if __MAC_OS_X_VERSION_MIN_REQUIRED &gt;= __MAC_10_7 \</span></div>
-<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;<span class="preprocessor">|| __IPHONE_OS_VERSION_MIN_REQUIRED &gt;= __IPHONE_5_0</span></div>
-<div class="line"><a name="l01454"></a><span class="lineno"><a class="code" href="class_o_o_json.html"> 1454</a></span>&#160;<span class="preprocessor"></span><span class="keyword">class </span><a class="code" href="class_o_o_json.html">OOJson</a> : <span class="keyword">public</span> <a class="code" href="class_o_o_dictionary.html">OODictionary&lt;OOString&gt;</a> {</div>
-<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l01456"></a><span class="lineno"><a class="code" href="class_o_o_json.html#af3e27aa587d0f7330879ac62b5c9ae7f"> 1456</a></span>&#160;    <a class="code" href="class_o_o_json.html#af3e27aa587d0f7330879ac62b5c9ae7f">OOJson</a>( <a class="code" href="objstr_8h.html#a0f44c9b0f26dd584eb8c47e991093d01">cOOData</a> data ) {</div>
-<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;        *<span class="keyword">this</span> = data;</div>
-<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;    }</div>
-<div class="line"><a name="l01459"></a><span class="lineno"><a class="code" href="class_o_o_json.html#a98a9f25becd08619d7fa90dff5c3c8bf"> 1459</a></span>&#160;    <a class="code" href="class_o_o_json.html#a98a9f25becd08619d7fa90dff5c3c8bf">OOJson</a>( <span class="keyword">const</span> <a class="code" href="class_o_o_dictionary.html">OODictionary&lt;OOString&gt;</a> &amp;dict ) {</div>
-<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;        *<span class="keyword">this</span> = dict;</div>
-<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160;    }</div>
-<div class="line"><a name="l01462"></a><span class="lineno"><a class="code" href="class_o_o_json.html#aedd2196555a8b78c8962dee7eef37aa9"> 1462</a></span>&#160;    <a class="code" href="class_o_o_json.html">OOJson</a> &amp;operator = ( <a class="code" href="objstr_8h.html#a0f44c9b0f26dd584eb8c47e991093d01">cOOData</a> data ) {</div>
-<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;        <span class="keyword">set</span>( [NSJSONSerialization JSONObjectWithData:data</div>
-<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;              options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:NULL] );</div>
-<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;    }</div>
-<div class="line"><a name="l01467"></a><span class="lineno"><a class="code" href="class_o_o_json.html#a0a12f6e169b808c496ac286487d74b0c"> 1467</a></span>&#160;    <a class="code" href="objcpp_8h.html#ad896c998e9491af6a27c89afb7f63b3e">OOData</a> <a class="code" href="class_o_o_json.html#a0a12f6e169b808c496ac286487d74b0c">data</a>() {</div>
-<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;        <span class="keywordflow">return</span> [NSJSONSerialization dataWithJSONObject:<span class="keyword">get</span>() options:NSJSONWritingPrettyPrinted error:NULL];</div>
-<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;    }</div>
-<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;};</div>
-<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;<span class="comment">/*=================================================================================*/</span></div>
-<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;<span class="comment">/*================================ Leftovers ======================================*/</span></div>
-<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;<span class="comment"> Shortcut for creating alerts.</span></div>
-<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;</div>
-<div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;<span class="keyword">inline</span> NSInteger OOAlert( <a class="code" href="class_o_o_string.html">OOString</a> msg, <span class="keywordtype">id</span> del = nil,</div>
-<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;                         <a class="code" href="class_o_o_string.html">OOString</a> cancel = <span class="stringliteral">@&quot;OK&quot;</span>, <a class="code" href="class_o_o_string.html">OOString</a> b1 = nil, <a class="code" href="class_o_o_string.html">OOString</a> b2 = nil ) {</div>
-<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;    NSLog( <span class="stringliteral">@&quot;** OOAlert: %@&quot;</span>, *msg );</div>
-<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;<span class="preprocessor">#ifdef APPKIT_EXTERN</span></div>
-<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">return</span> [[NSAlert alertWithMessageText:*<a class="code" href="class_o_o_info.html">OOInfo</a>()[kCFBundleNameKey]</div>
-<div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160;                            defaultButton:cancel alternateButton:b1 otherButton:b2</div>
-<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160;                informativeTextWithFormat:<span class="stringliteral">@&quot;%@&quot;</span>, *msg] runModal];</div>
-<div class="line"><a name="l01487"></a><span class="lineno"> 1487</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef __IPHONE_OS_VERSION_MIN_REQUIRED</span></div>
-<div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;<span class="preprocessor"></span>    dispatch_async( dispatch_get_main_queue(), ^ {</div>
-<div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;        UIAlertView *alert = [[UIAlertView alloc]</div>
-<div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160;                           initWithTitle:*<a class="code" href="class_o_o_info.html">OOInfo</a>()[<span class="stringliteral">@&quot;CFBundleDisplayName&quot;</span>] message:msg delegate:del</div>
-<div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160;                           cancelButtonTitle:cancel otherButtonTitles:*b1, *b2, nil];</div>
-<div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;        [alert show];</div>
-<div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;        <a class="code" href="objcpp_8h.html#a5f1031581d9968066e117247f5ca0c60">OO_RELEASE</a>( alert );</div>
-<div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;    } );</div>
-<div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;        <span class="keywordflow">if</span> ( (pid = fork()) == 0 ) {</div>
+<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;</div>
+<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;            FILE *fp = popen( <span class="stringliteral">&quot;/usr/bin/perl -e &#39;print \&quot;$_=$ENV{$_}\\n\&quot; foreach keys %ENV; exit 99;&#39;&quot;</span>, <span class="stringliteral">&quot;r&quot;</span> );</div>
+<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;            <span class="keywordflow">if</span> ( fp ) {</div>
+<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;                <span class="keywordtype">char</span> line[10000];</div>
+<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;                <span class="keywordflow">while</span>( fp &amp;&amp; fgets( line, <span class="keyword">sizeof</span> line, fp ) ) {</div>
+<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;                    line[strlen(line)-1] = <span class="charliteral">&#39;\000&#39;</span>;</div>
+<div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160;                    *eptr++ = strdup(line);</div>
+<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;                }</div>
+<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;                <span class="keywordflow">if</span> ( pclose( fp )&gt;&gt;8 != 99 )</div>
+<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;                    exit( 99 );</div>
+<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;            }</div>
+<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;            *eptr++ = NULL;</div>
+<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;</div>
+<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;            <span class="comment">// close parent pipes</span></div>
+<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160;            close( input[1] );</div>
+<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;            close( output[0] );</div>
+<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;</div>
+<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;            <span class="comment">// setup stdin/stdout/stderr</span></div>
+<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;            close( 0 ); dup( input[0] ); close( input[0] );</div>
+<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;            close( 1 ); dup( output[1] );</div>
+<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;            close( 2 ); dup( output[1] ); close( output[1] );</div>
+<div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160;</div>
+<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;            <span class="keywordflow">if</span> ( execve( argv[0], (<span class="keywordtype">char</span> * <span class="keyword">const</span> *)argv, (<span class="keywordtype">char</span> * <span class="keyword">const</span> *)envp ) &lt; 0 )</div>
+<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;                NSLog( <span class="stringliteral">@&quot;OOTask::exec - execve failed&quot;</span> );</div>
+<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;            exit(1);</div>
+<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;        }</div>
+<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;</div>
+<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;        close( input[0] );</div>
+<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;        close( output[1] );</div>
+<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;</div>
+<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;        standardInput = input[1];</div>
+<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;        <span class="keywordflow">return</span> fdopen( output[0], <span class="stringliteral">&quot;r&quot;</span> );</div>
+<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;    }</div>
+<div class="line"><a name="l01438"></a><span class="lineno"><a class="code" href="class_o_o_task.html#aa4cce8714b815c9f0ae8efbe94bb9320"> 1438</a></span>&#160;    ssize_t <a class="code" href="class_o_o_task.html#aa4cce8714b815c9f0ae8efbe94bb9320">send</a>( <a class="code" href="objcpp_8h.html#ad896c998e9491af6a27c89afb7f63b3e">OOData</a> input ) {</div>
+<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;        ssize_t wrote = write( standardInput, [input bytes], [input length] );</div>
+<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;        close( standardInput );</div>
+<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;        standardInput = -1;</div>
+<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;        <span class="keywordflow">return</span> wrote;</div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;    }</div>
+<div class="line"><a name="l01444"></a><span class="lineno"><a class="code" href="class_o_o_task.html#a8d887748a03b5a2008d47f2789e8faa1"> 1444</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_o_o_task.html#a8d887748a03b5a2008d47f2789e8faa1">wait</a>() {</div>
+<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;        <span class="keywordflow">if</span> ( standardInput &gt;= 0 )</div>
+<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;            close( standardInput );</div>
+<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;        <span class="keywordtype">int</span> status = 1;</div>
+<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;        <span class="keywordflow">if</span> ( waitpid(pid,&amp;status,0) &lt; 0 )</div>
+<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;            NSLog( <span class="stringliteral">@&quot;OOTask::exec - wait problem&quot;</span> );</div>
+<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;        <span class="keywordflow">return</span> status;</div>
+<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;    }</div>
+<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;};</div>
+<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;</div>
+<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;<span class="preprocessor">#if __MAC_OS_X_VERSION_MIN_REQUIRED &gt;= __MAC_10_7 \</span></div>
+<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160;<span class="preprocessor">|| __IPHONE_OS_VERSION_MIN_REQUIRED &gt;= __IPHONE_5_0</span></div>
+<div class="line"><a name="l01456"></a><span class="lineno"><a class="code" href="class_o_o_json.html"> 1456</a></span>&#160;<span class="preprocessor"></span><span class="keyword">class </span><a class="code" href="class_o_o_json.html">OOJson</a> : <span class="keyword">public</span> <a class="code" href="class_o_o_dictionary.html">OODictionary&lt;OOString&gt;</a> {</div>
+<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l01458"></a><span class="lineno"><a class="code" href="class_o_o_json.html#af3e27aa587d0f7330879ac62b5c9ae7f"> 1458</a></span>&#160;    <a class="code" href="class_o_o_json.html#af3e27aa587d0f7330879ac62b5c9ae7f">OOJson</a>( <a class="code" href="objstr_8h.html#a0f44c9b0f26dd584eb8c47e991093d01">cOOData</a> data ) {</div>
+<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;        *<span class="keyword">this</span> = data;</div>
+<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;    }</div>
+<div class="line"><a name="l01461"></a><span class="lineno"><a class="code" href="class_o_o_json.html#a98a9f25becd08619d7fa90dff5c3c8bf"> 1461</a></span>&#160;    <a class="code" href="class_o_o_json.html#a98a9f25becd08619d7fa90dff5c3c8bf">OOJson</a>( <span class="keyword">const</span> <a class="code" href="class_o_o_dictionary.html">OODictionary&lt;OOString&gt;</a> &amp;dict ) {</div>
+<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;        *<span class="keyword">this</span> = dict;</div>
+<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;    }</div>
+<div class="line"><a name="l01464"></a><span class="lineno"><a class="code" href="class_o_o_json.html#aedd2196555a8b78c8962dee7eef37aa9"> 1464</a></span>&#160;    <a class="code" href="class_o_o_json.html">OOJson</a> &amp;operator = ( <a class="code" href="objstr_8h.html#a0f44c9b0f26dd584eb8c47e991093d01">cOOData</a> data ) {</div>
+<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;        <span class="keyword">set</span>( [NSJSONSerialization JSONObjectWithData:data</div>
+<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;              options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:NULL] );</div>
+<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;    }</div>
+<div class="line"><a name="l01469"></a><span class="lineno"><a class="code" href="class_o_o_json.html#a0a12f6e169b808c496ac286487d74b0c"> 1469</a></span>&#160;    <a class="code" href="objcpp_8h.html#ad896c998e9491af6a27c89afb7f63b3e">OOData</a> <a class="code" href="class_o_o_json.html#a0a12f6e169b808c496ac286487d74b0c">data</a>() {</div>
+<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;        <span class="keywordflow">return</span> [NSJSONSerialization dataWithJSONObject:<span class="keyword">get</span>() options:NSJSONWritingPrettyPrinted error:NULL];</div>
+<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;    }</div>
+<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;};</div>
+<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;<span class="comment">/*=================================================================================*/</span></div>
+<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;<span class="comment">/*================================ Leftovers ======================================*/</span></div>
+<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;<span class="comment"> Shortcut for creating alerts.</span></div>
+<div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;</div>
+<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;<span class="keyword">inline</span> NSInteger OOAlert( <a class="code" href="class_o_o_string.html">OOString</a> msg, <span class="keywordtype">id</span> del = nil,</div>
+<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;                         <a class="code" href="class_o_o_string.html">OOString</a> cancel = <span class="stringliteral">@&quot;OK&quot;</span>, <a class="code" href="class_o_o_string.html">OOString</a> b1 = nil, <a class="code" href="class_o_o_string.html">OOString</a> b2 = nil ) {</div>
+<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;    NSLog( <span class="stringliteral">@&quot;** OOAlert: %@&quot;</span>, *msg );</div>
+<div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160;<span class="preprocessor">#ifdef APPKIT_EXTERN</span></div>
+<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">return</span> [[NSAlert alertWithMessageText:*<a class="code" href="class_o_o_info.html">OOInfo</a>()[kCFBundleNameKey]</div>
+<div class="line"><a name="l01487"></a><span class="lineno"> 1487</span>&#160;                            defaultButton:cancel alternateButton:b1 otherButton:b2</div>
+<div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160;                informativeTextWithFormat:<span class="stringliteral">@&quot;%@&quot;</span>, *msg] runModal];</div>
+<div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef __IPHONE_OS_VERSION_MIN_REQUIRED</span></div>
+<div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160;<span class="preprocessor"></span>    dispatch_async( dispatch_get_main_queue(), ^ {</div>
+<div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160;        UIAlertView *alert = [[UIAlertView alloc]</div>
+<div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;                           initWithTitle:*<a class="code" href="class_o_o_info.html">OOInfo</a>()[<span class="stringliteral">@&quot;CFBundleDisplayName&quot;</span>] message:msg delegate:del</div>
+<div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;                           cancelButtonTitle:cancel otherButtonTitles:*b1, *b2, nil];</div>
+<div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;        [alert show];</div>
+<div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160;        <a class="code" href="objcpp_8h.html#a5f1031581d9968066e117247f5ca0c60">OO_RELEASE</a>( alert );</div>
+<div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160;    } );</div>
 <div class="line"><a name="l01498"></a><span class="lineno"> 1498</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01499"></a><span class="lineno"> 1499</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l01500"></a><span class="lineno"> 1500</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;<span class="comment"> A wrapper for a number using NSNumber so it can be put in an NSArray or NSDictionary</span></div>
-<div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;</div>
-<div class="line"><a name="l01505"></a><span class="lineno"><a class="code" href="class_o_o_number.html"> 1505</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_o_number.html">OONumber</a> : <span class="keyword">public</span> <a class="code" href="class_o_o_reference.html">OOReference&lt;NSNumber *&gt;</a> {</div>
-<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l01507"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a354d405b71f99bf01877e32857e81fa8"> 1507</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html#a354d405b71f99bf01877e32857e81fa8">OONumber</a>( <span class="keywordtype">double</span> d ) {</div>
-<div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;        rawset( [[NSNumber alloc] initWithDouble:d] );</div>
-<div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;    }</div>
-<div class="line"><a name="l01510"></a><span class="lineno"><a class="code" href="class_o_o_number.html#acca5410736341c363bf4d6c6f273d0e5"> 1510</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html#acca5410736341c363bf4d6c6f273d0e5">OONumber</a>( NSNumber *val ) {</div>
-<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160;        <span class="keyword">set</span>( val );</div>
-<div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160;    }</div>
-<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;</div>
-<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> NSNumber * () <span class="keyword">const</span> { <span class="keywordflow">return</span> <span class="keyword">get</span>(); } </div>
-<div class="line"><a name="l01515"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a8bfd24998616988693ab9928b32ffb9c"> 1515</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> double ()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> [<span class="keyword">get</span>() doubleValue]; } </div>
-<div class="line"><a name="l01516"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a57596042476a5fdfbbb6ea60bcf3c9e8"> 1516</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keywordtype">double</span> <a class="code" href="objcpp_8h.html#a0285bca8bff5107ead59871d08f0e997">operator * </a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> [<span class="keyword">get</span>() doubleValue]; }</div>
-<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;</div>
-<div class="line"><a name="l01518"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a1eaf4a65eec840d23cfde9432a347b76"> 1518</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;operator = ( <span class="keyword">const</span> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;val ) { <span class="keyword">set</span>( val.get() ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
-<div class="line"><a name="l01519"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a69dcdd92814fbb52d60d75cbf18b4f6d"> 1519</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;operator += ( <span class="keywordtype">double</span> val ) { <span class="keywordflow">return</span> *<span class="keyword">this</span> = *<span class="keyword">this</span> + val; }</div>
-<div class="line"><a name="l01520"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a9431061ef17cfc2a39d6fa27d0cc4ca3"> 1520</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;operator -= ( <span class="keywordtype">double</span> val ) { <span class="keywordflow">return</span> *<span class="keyword">this</span> = *<span class="keyword">this</span> - val; }</div>
-<div class="line"><a name="l01521"></a><span class="lineno"><a class="code" href="class_o_o_number.html#ac04b4488ecf1ec5f73a339e2184e59ff"> 1521</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;operator *= ( <span class="keywordtype">double</span> val ) { <span class="keywordflow">return</span> *<span class="keyword">this</span> = *<span class="keyword">this</span> * val; }</div>
-<div class="line"><a name="l01522"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a2927f3763df1327bbfd46dfb43657337"> 1522</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;operator /= ( <span class="keywordtype">double</span> val ) { <span class="keywordflow">return</span> *<span class="keyword">this</span> = *<span class="keyword">this</span> / val; }</div>
-<div class="line"><a name="l01523"></a><span class="lineno"><a class="code" href="class_o_o_number.html#ac4edc099a9706a063a1e4cfbfd1db6ab"> 1523</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> <a class="code" href="objstr_8h.html#af76626b34c8c0f3aef80ae3c32ffec2f">operator + </a>( <span class="keywordtype">double</span> val )<span class="keyword"> const </span>{ <span class="keywordflow">return</span> **<span class="keyword">this</span> + val; }</div>
-<div class="line"><a name="l01524"></a><span class="lineno"><a class="code" href="class_o_o_number.html#ac1e0d60399d9d84fa8b1dba66511a68d"> 1524</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> operator - ( <span class="keywordtype">double</span> val )<span class="keyword"> const </span>{ <span class="keywordflow">return</span> **<span class="keyword">this</span> - val; }</div>
-<div class="line"><a name="l01525"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a05219f69163016c1187f4aa9a65f2a88"> 1525</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> <a class="code" href="objcpp_8h.html#a0285bca8bff5107ead59871d08f0e997">operator * </a>( <span class="keywordtype">double</span> val )<span class="keyword"> const </span>{ <span class="keywordflow">return</span> **<span class="keyword">this</span> * val; }</div>
-<div class="line"><a name="l01526"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a51abcc3c40db42143e2c1ee4dcbc9ce3"> 1526</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> <a class="code" href="objcpp_8h.html#a98024a60355702fa18c67b8e6be3397a">operator / </a>( <span class="keywordtype">double</span> val )<span class="keyword"> const </span>{ <span class="keywordflow">return</span> **<span class="keyword">this</span> / val; }</div>
-<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;};</div>
-<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;<span class="comment"> A fledgling wrapper for NSScanner which didn&#39;t really pan out...</span></div>
-<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;</div>
-<div class="line"><a name="l01533"></a><span class="lineno"><a class="code" href="class_o_o_scan.html"> 1533</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_o_scan.html">OOScan</a> {</div>
-<div class="line"><a name="l01534"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#a2b8d3e0db4df74e0b8e8b19faec41af7"> 1534</a></span>&#160;    <a class="code" href="class_o_o_reference.html">OOReference&lt;NSScanner *&gt;</a> <a class="code" href="class_o_o_scan.html#a2b8d3e0db4df74e0b8e8b19faec41af7">scan</a>;</div>
-<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l01536"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#a4646d790e3d5471f5e0fc8a1d3beb335"> 1536</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_scan.html#a4646d790e3d5471f5e0fc8a1d3beb335">OOScan</a>( <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> input ) {</div>
-<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;        <a class="code" href="objcpp_8h.html#a5f1031581d9968066e117247f5ca0c60">OO_RELEASE</a>( *(scan = [[NSScanner alloc] initWithString:input]) );</div>
-<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;    }</div>
-<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;</div>
-<div class="line"><a name="l01540"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#a45b350031303d4f09d7525a4a44d0282"> 1540</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_string.html">OOString</a> <a class="code" href="objstr_8h.html#a818cbc8a63dea73a319194ffbe1d0b45">operator &amp; </a>( NSString *str ) {</div>
-<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;        NSString *out = nil;</div>
-<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;        [*scan scanString:str intoString:&amp;out];</div>
-<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160;        <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l01544"></a><span class="lineno"> 1544</span>&#160;    }</div>
-<div class="line"><a name="l01545"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#ae309545610421f40523d18980efba03d"> 1545</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_string.html">OOString</a> <a class="code" href="objstr_8h.html#a5d90129caaa5725bc44801b970b64350">operator | </a>( NSString *str ) {</div>
-<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;        NSString *out = nil;</div>
-<div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160;        [*scan scanUpToString:str intoString:&amp;out];</div>
-<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;        <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;    }</div>
-<div class="line"><a name="l01550"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#ad0213a9b9f6b09c61c44251f20ea4a14"> 1550</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_scan.html">OOScan</a> &amp;<a class="code" href="objsql_8h.html#a466557bc2e6d016a8f701983c76e3e29">operator &gt;&gt; </a>( <span class="keywordtype">double</span> &amp;d ) {</div>
-<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;        [*scan scanDouble:&amp;d];</div>
-<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160;    }</div>
-<div class="line"><a name="l01554"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#a583bb44e4ba76d97ef0470f42f4a680e"> 1554</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_scan.html">OOScan</a> &amp;<a class="code" href="objsql_8h.html#a466557bc2e6d016a8f701983c76e3e29">operator &gt;&gt; </a>( <span class="keywordtype">float</span> &amp;f ) {</div>
-<div class="line"><a name="l01555"></a><span class="lineno"> 1555</span>&#160;        [*scan scanFloat:&amp;f];</div>
-<div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;    }</div>
-<div class="line"><a name="l01558"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#a5f7f963a615d7846bc0541f460186fe2"> 1558</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_scan.html">OOScan</a> &amp;<a class="code" href="objsql_8h.html#a466557bc2e6d016a8f701983c76e3e29">operator &gt;&gt; </a>( <span class="keywordtype">int</span> &amp;i ) {</div>
-<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;        [*scan scanInt:&amp;i];</div>
-<div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;    }</div>
-<div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;};</div>
-<div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160;</div>
-<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01499"></a><span class="lineno"> 1499</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l01500"></a><span class="lineno"> 1500</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;<span class="comment"> A wrapper for a number using NSNumber so it can be put in an NSArray or NSDictionary</span></div>
+<div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;</div>
+<div class="line"><a name="l01507"></a><span class="lineno"><a class="code" href="class_o_o_number.html"> 1507</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_o_number.html">OONumber</a> : <span class="keyword">public</span> <a class="code" href="class_o_o_reference.html">OOReference&lt;NSNumber *&gt;</a> {</div>
+<div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l01509"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a354d405b71f99bf01877e32857e81fa8"> 1509</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html#a354d405b71f99bf01877e32857e81fa8">OONumber</a>( <span class="keywordtype">double</span> d ) {</div>
+<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;        rawset( [[NSNumber alloc] initWithDouble:d] );</div>
+<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160;    }</div>
+<div class="line"><a name="l01512"></a><span class="lineno"><a class="code" href="class_o_o_number.html#acca5410736341c363bf4d6c6f273d0e5"> 1512</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html#acca5410736341c363bf4d6c6f273d0e5">OONumber</a>( NSNumber *val ) {</div>
+<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;        <span class="keyword">set</span>( val );</div>
+<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160;    }</div>
+<div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160;</div>
+<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> NSNumber * () <span class="keyword">const</span> { <span class="keywordflow">return</span> <span class="keyword">get</span>(); } </div>
+<div class="line"><a name="l01517"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a8bfd24998616988693ab9928b32ffb9c"> 1517</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keyword">operator</span> double ()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> [<span class="keyword">get</span>() doubleValue]; }</div>
+<div class="line"><a name="l01518"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a57596042476a5fdfbbb6ea60bcf3c9e8"> 1518</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <span class="keywordtype">double</span> <a class="code" href="objcpp_8h.html#a0285bca8bff5107ead59871d08f0e997">operator * </a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> [<span class="keyword">get</span>() doubleValue]; }</div>
+<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;</div>
+<div class="line"><a name="l01520"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a1eaf4a65eec840d23cfde9432a347b76"> 1520</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;operator = ( <span class="keyword">const</span> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;val ) { <span class="keyword">set</span>( val.get() ); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l01521"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a69dcdd92814fbb52d60d75cbf18b4f6d"> 1521</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;operator += ( <span class="keywordtype">double</span> val ) { <span class="keywordflow">return</span> *<span class="keyword">this</span> = *<span class="keyword">this</span> + val; }</div>
+<div class="line"><a name="l01522"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a9431061ef17cfc2a39d6fa27d0cc4ca3"> 1522</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;operator -= ( <span class="keywordtype">double</span> val ) { <span class="keywordflow">return</span> *<span class="keyword">this</span> = *<span class="keyword">this</span> - val; }</div>
+<div class="line"><a name="l01523"></a><span class="lineno"><a class="code" href="class_o_o_number.html#ac04b4488ecf1ec5f73a339e2184e59ff"> 1523</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;operator *= ( <span class="keywordtype">double</span> val ) { <span class="keywordflow">return</span> *<span class="keyword">this</span> = *<span class="keyword">this</span> * val; }</div>
+<div class="line"><a name="l01524"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a2927f3763df1327bbfd46dfb43657337"> 1524</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> &amp;operator /= ( <span class="keywordtype">double</span> val ) { <span class="keywordflow">return</span> *<span class="keyword">this</span> = *<span class="keyword">this</span> / val; }</div>
+<div class="line"><a name="l01525"></a><span class="lineno"><a class="code" href="class_o_o_number.html#ac4edc099a9706a063a1e4cfbfd1db6ab"> 1525</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> <a class="code" href="objstr_8h.html#af76626b34c8c0f3aef80ae3c32ffec2f">operator + </a>( <span class="keywordtype">double</span> val )<span class="keyword"> const </span>{ <span class="keywordflow">return</span> **<span class="keyword">this</span> + val; }</div>
+<div class="line"><a name="l01526"></a><span class="lineno"><a class="code" href="class_o_o_number.html#ac1e0d60399d9d84fa8b1dba66511a68d"> 1526</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> operator - ( <span class="keywordtype">double</span> val )<span class="keyword"> const </span>{ <span class="keywordflow">return</span> **<span class="keyword">this</span> - val; }</div>
+<div class="line"><a name="l01527"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a05219f69163016c1187f4aa9a65f2a88"> 1527</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> <a class="code" href="objcpp_8h.html#a0285bca8bff5107ead59871d08f0e997">operator * </a>( <span class="keywordtype">double</span> val )<span class="keyword"> const </span>{ <span class="keywordflow">return</span> **<span class="keyword">this</span> * val; }</div>
+<div class="line"><a name="l01528"></a><span class="lineno"><a class="code" href="class_o_o_number.html#a51abcc3c40db42143e2c1ee4dcbc9ce3"> 1528</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_number.html">OONumber</a> <a class="code" href="objcpp_8h.html#a98024a60355702fa18c67b8e6be3397a">operator / </a>( <span class="keywordtype">double</span> val )<span class="keyword"> const </span>{ <span class="keywordflow">return</span> **<span class="keyword">this</span> / val; }</div>
+<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;};</div>
+<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;<span class="comment"> A fledgling wrapper for NSScanner which didn&#39;t really pan out...</span></div>
+<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;</div>
+<div class="line"><a name="l01535"></a><span class="lineno"><a class="code" href="class_o_o_scan.html"> 1535</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_o_o_scan.html">OOScan</a> {</div>
+<div class="line"><a name="l01536"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#a2b8d3e0db4df74e0b8e8b19faec41af7"> 1536</a></span>&#160;    <a class="code" href="class_o_o_reference.html">OOReference&lt;NSScanner *&gt;</a> <a class="code" href="class_o_o_scan.html#a2b8d3e0db4df74e0b8e8b19faec41af7">scan</a>;</div>
+<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l01538"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#a4646d790e3d5471f5e0fc8a1d3beb335"> 1538</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_scan.html#a4646d790e3d5471f5e0fc8a1d3beb335">OOScan</a>( <a class="code" href="objcpp_8h.html#a284c0060177bf98ce3374cc7086b4dfe">cOOString</a> input ) {</div>
+<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;        <a class="code" href="objcpp_8h.html#a5f1031581d9968066e117247f5ca0c60">OO_RELEASE</a>( *(scan = [[NSScanner alloc] initWithString:input]) );</div>
+<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;    }</div>
+<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;</div>
+<div class="line"><a name="l01542"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#a45b350031303d4f09d7525a4a44d0282"> 1542</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_string.html">OOString</a> <a class="code" href="objstr_8h.html#a818cbc8a63dea73a319194ffbe1d0b45">operator &amp; </a>( NSString *str ) {</div>
+<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160;        NSString *out = nil;</div>
+<div class="line"><a name="l01544"></a><span class="lineno"> 1544</span>&#160;        [*scan scanString:str intoString:&amp;out];</div>
+<div class="line"><a name="l01545"></a><span class="lineno"> 1545</span>&#160;        <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;    }</div>
+<div class="line"><a name="l01547"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#ae309545610421f40523d18980efba03d"> 1547</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_string.html">OOString</a> <a class="code" href="objstr_8h.html#a5d90129caaa5725bc44801b970b64350">operator | </a>( NSString *str ) {</div>
+<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;        NSString *out = nil;</div>
+<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;        [*scan scanUpToString:str intoString:&amp;out];</div>
+<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;        <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;    }</div>
+<div class="line"><a name="l01552"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#ad0213a9b9f6b09c61c44251f20ea4a14"> 1552</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_scan.html">OOScan</a> &amp;<a class="code" href="objsql_8h.html#a466557bc2e6d016a8f701983c76e3e29">operator &gt;&gt; </a>( <span class="keywordtype">double</span> &amp;d ) {</div>
+<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160;        [*scan scanDouble:&amp;d];</div>
+<div class="line"><a name="l01554"></a><span class="lineno"> 1554</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l01555"></a><span class="lineno"> 1555</span>&#160;    }</div>
+<div class="line"><a name="l01556"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#a583bb44e4ba76d97ef0470f42f4a680e"> 1556</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_scan.html">OOScan</a> &amp;<a class="code" href="objsql_8h.html#a466557bc2e6d016a8f701983c76e3e29">operator &gt;&gt; </a>( <span class="keywordtype">float</span> &amp;f ) {</div>
+<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;        [*scan scanFloat:&amp;f];</div>
+<div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;    }</div>
+<div class="line"><a name="l01560"></a><span class="lineno"><a class="code" href="class_o_o_scan.html#a5f7f963a615d7846bc0541f460186fe2"> 1560</a></span>&#160;    <a class="code" href="objcpp_8h.html#a5e712be6142aa076e2c7f4fdadca5760">oo_inline</a> <a class="code" href="class_o_o_scan.html">OOScan</a> &amp;<a class="code" href="objsql_8h.html#a466557bc2e6d016a8f701983c76e3e29">operator &gt;&gt; </a>( <span class="keywordtype">int</span> &amp;i ) {</div>
+<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;        [*scan scanInt:&amp;i];</div>
+<div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160;    }</div>
+<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;};</div>
+<div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;</div>
+<div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 9 2014 20:29:13 for Objective-C++ Preprocessor by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 14 2014 14:28:46 for Objective-C++ Preprocessor by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
