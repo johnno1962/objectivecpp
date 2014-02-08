@@ -5,8 +5,8 @@
  *  Created by John Holdsworth on 01/04/2009.
  *  Copyright 2009 © John Holdsworth. All Rights Reserved.
  *
- *  $Id: //depot/ObjCpp/objstr.h#104 $
- *  $DateTime: 2014/01/14 12:25:23 $
+ *  $Id: //depot/ObjCpp/objstr.h#113 $
+ *  $DateTime: 2014/01/31 00:43:52 $
  *
  *  C++ classes to wrap up XCode classes for operator overload of
  *  useful operations such as access to NSArrays and NSDictionary
@@ -193,13 +193,17 @@ public:
 	oo_inline OOString( NSString *str ) { *this = str; }
 	oo_inline OOString( double val ) { *this += val; }
 	oo_inline OOString( const char *val ) {
-		rawset( [[NSMutableString alloc] initWithUTF8String:val] );
+        if ( !val ) OOWarn( @"NULL const char * for OOString create" );
+        else rawset( [[NSMutableString alloc] initWithUTF8String:val] );
 	}
-	oo_inline OOString( const char *val, NSUInteger len, int encoding = NSUTF8StringEncoding ) {
-		rawset( val ? [[NSMutableString alloc] initWithBytes:val length:len encoding:encoding] : nil );
+	oo_inline OOString( const char *val, NSInteger len, int encoding = NSUTF8StringEncoding ) {
+        if ( !val ) OOWarn( @"NULL const char * passed in for OOString with len create" );
+        else if ( len < 0 ) OOWarn( @"Negative length %d for const char * OOString create", (int)len );
+        else rawset( [[NSMutableString alloc] initWithBytes:val length:len encoding:encoding] );
 	}
 	oo_inline OOString( OOData data, NSStringEncoding encoding = NSUTF8StringEncoding ) {
-        rawset( data ? [[NSMutableString alloc] initWithData:data encoding:encoding] : nil );
+        if ( !data ) OOWarn( @"nil OOData passed in for OOString create" );
+        else rawset( [[NSMutableString alloc] initWithData:data encoding:encoding] );
 	}
 	oo_inline OOString( cOOStringArray val ) {
 		*this = val.join( @" " );
@@ -229,7 +233,7 @@ public:
 #ifdef DEBUG
             return NULL; // hard crash on nil string during debugging
 #else
-            return "<nil>"; // be more forgiving on released code
+            return "(nil)"; // be more forgiving on released code
 #endif
     }
 	oo_inline operator OOData () const { return utf8Data(); }
@@ -271,8 +275,8 @@ public:
 	oo_inline OOString &operator += ( double val ) { [alloc() appendFormat:@"%f", val]; return *this; }
 	oo_inline OOString &operator += ( const char *val ) { [alloc() appendString:OOString( val ).get()]; return *this; }
 	oo_inline OOString &operator += ( NSMutableString *str ) { [alloc() appendString:str]; return *this; }
-	oo_inline OOString &operator += ( NSString *str ) { [alloc() appendString:str ? str : @"<nil>"]; return *this; }
-	oo_inline OOString &operator += ( cOOString str ) { [alloc() appendString:str.get()]; return *this; }
+	oo_inline OOString &operator += ( NSString *str ) { [alloc() appendString:!str ? @"(nil)" : str]; return *this; }
+    oo_inline OOString &operator += ( cOOString str ) { [alloc() appendString:!str ? @"(nil)" : str.get()]; return *this; }
 	oo_inline OOString &operator += ( const OOArraySub<OOString> &str ) { [alloc() appendString:str.get()]; return *this; }
 	oo_inline OOString &operator += ( const OODictionarySub<OOString> &str ) { [alloc() appendString:str.get()]; return *this; }
 
@@ -525,7 +529,10 @@ inline BOOL operator != ( const char *left, cOOString right ) { return OOString(
 
 // string || string for default values
 inline OOString operator || ( cOOString left, cOOString right ) { return !left ? right : left; }
-inline OOString operator || ( cOOString left, const char *right ) { return left || OOString( right ); }
+inline OOString operator || ( cOOString left, NSString *right ) { return left || OO right ; }
+inline OOString operator || ( cOOString left, const char *right ) { return left || OO right ; }
+inline OOString operator || ( NSString *left, cOOString right ) { return OO left || right; }
+inline OOString operator || ( const char *left, cOOString right ) { return OO left || right; }
 
 /**
  A class to represent a C pointer inside an NSValue object for ref counting and
@@ -546,7 +553,7 @@ protected:
         // recover pointer from NSValue object
         set( val );
         ptr = val == OONull || ![val respondsToSelector:@selector(pointerValue)] ?
-        NULL : (PTYPE)[val pointerValue];
+            NULL : (PTYPE)[val pointerValue];
         return val;
     }
     oo_inline PTYPE pset( PTYPE ptr ) {
@@ -827,7 +834,7 @@ class OOStringSearch {
         str = (OOString *)ref;
         idx = sub;
         if ( !*ref ) {
-            NSLog( @"** nil string for subscripted pattern match: %@", *sub );
+            NSLog( @"** nil string for subscripted match with pattern: %@", *sub );
 #ifndef DEBUG
             *str = @""; // avoid crash unless debugging
 #endif
@@ -836,19 +843,27 @@ class OOStringSearch {
             NSLog( @"** nil pattern in subscripted match" );
     }
 
-public:
     oo_inline OOPattern pattern() const {
         return OOPattern( idx );
     }
+public:
     oo_inline NSRange range() const {
         return pattern().range( *str );
     }
     oo_inline operator NSRange () const {
         return range();
     }
+    // ! change here with version 5.0 !
+    // BOOL more usefull than location.
+#if 0
 	oo_inline operator NSUInteger () const {
 		return range().location;
 	}
+#else
+    oo_inline operator BOOL () const {
+        return !!*this;
+    }
+#endif
     oo_inline BOOL operator ! () const {
         return !*str || !pattern().exec( *str );
     }
@@ -891,6 +906,11 @@ public:
     }
     oo_inline OOString &operator = ( OOTmpString (^callback)( cOOStringArray groups ) ) {
         return *this = (OOReplaceBlock)callback;
+    }
+    oo_inline OOString &operator = ( cOOStringDictionary replacements ) {
+        return *this = ^( cOOStringArray groups ) {
+            return *replacements[groups[0]]||*groups[0];
+        };
     }
 
     oo_inline OOString operator [] ( int group ) const {
@@ -985,6 +1005,7 @@ inline int OOTrap() {
  Network request on which you can POST data or set HTP header values.
  */
 
+class OOURL;
 class OORequestSub;
 class OORequest : public OOReference<NSMutableURLRequest *> {
 public:
@@ -992,23 +1013,31 @@ public:
 	NSError *error;
 
 	oo_inline OORequest() {}
+    oo_inline OORequest( cOOURL url );
 	oo_inline OORequest( NSURL *url, 
 						NSURLRequestCachePolicy cachePolicy = NSURLRequestUseProtocolCachePolicy, 
 						NSTimeInterval timeoutInterval = 60. ) {
 		rawset( [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:cachePolicy
                                          timeoutInterval:timeoutInterval] );
 	}
-	oo_inline OORequest( cOOString url ) {
-		NSURL *URL = [[NSURL alloc] initWithString:url];
-		rawset( [[NSMutableURLRequest alloc] initWithURL:URL] );
-		OO_RELEASE( URL );
+	oo_inline OORequest( NSString *url ) {
+		setURL( url );
 	}
-	oo_inline OORequest( const OORequest &req ) {
+	oo_inline OORequest( cOOString url ) {
+		setURL( url );
+	}
+	oo_inline OORequest( cOORequest req ) {
 		set( req.get() );
 	}
 	oo_inline OORequest( NSURLRequest *req ) {
 		*this = req; /////
 	}
+
+    oo_inline void setURL( NSString *url ) {
+		NSURL *URL = [[NSURL alloc] initWithString:url];
+		rawset( [[NSMutableURLRequest alloc] initWithURL:URL] );
+		OO_RELEASE( URL );
+    }
 
 	oo_inline OORequest &operator = ( NSURLRequest *val ) { 
 		set( (id)val ); return *this; /////
@@ -1031,7 +1060,7 @@ public:
     oo_inline NSString *urlEncode( NSString *text ) {
 		NSMutableString *encoded = [NSMutableString string];
 		for ( const char *iptr = [text UTF8String] ; iptr && *iptr ; iptr++ )
-			if ( *iptr > 0 ) ///
+			if ( *iptr > 0 && *iptr != '%' ) ///
 				[encoded appendFormat:@"%c", *iptr];
 			else
 				[encoded appendFormat:@"%%%02x", *iptr&0xff];
@@ -1039,14 +1068,14 @@ public:
 		return encoded;
 	}
 
-	oo_inline OOData data( NSStringEncoding *encoding = NULL ) {
+	oo_inline OOData data( NSStringEncoding *encoding = NULL, NSError **errorPtr = NULL ) {
         [[NSURLCache sharedURLCache] removeCachedResponseForRequest:get()];
 #ifndef OO_ARC
-        OOData data = [NSURLConnection sendSynchronousRequest:get() returningResponse:&lastResponse error:&error];
+        OOData data = [NSURLConnection sendSynchronousRequest:get() returningResponse:&lastResponse error:errorPtr];
 #else
-        NSURLResponse *tmpResponse; NSError *tmpError;
-		OOData data = [NSURLConnection sendSynchronousRequest:get() returningResponse:&tmpResponse error:&tmpError];
-        lastResponse = tmpResponse; error = tmpError;
+        NSURLResponse *tmpResponse; //NSError *tmpError;
+		OOData data = [NSURLConnection sendSynchronousRequest:get() returningResponse:&tmpResponse error:errorPtr];
+        lastResponse = tmpResponse; //error = tmpError;
 #endif
         if ( encoding ) {
             NSString *textEncoding = [lastResponse textEncodingName];
@@ -1058,12 +1087,12 @@ public:
 
         return data;
 	}
-	oo_inline OOString string( NSStringEncoding *encoding = NULL ) {
+	oo_inline OOString string( NSStringEncoding *encoding = NULL, NSError **errorPtr = NULL ) {
 		////OOPool pool;
         NSStringEncoding tmpEnc;
         if ( !encoding )
             encoding = &tmpEnc;
-        OOData data = this->data( encoding );
+        OOData data = this->data( encoding, errorPtr );
         return OOString( data, *encoding );
 	}
     oo_inline operator OOString () {
@@ -1109,7 +1138,7 @@ public:
 		setURL( url, base );
 	}
 	oo_inline OOURL( NSString *url = OONil, NSURL *base = nil ) {
-		setURL( url, nil );
+		setURL( url, base );
 	}
 	oo_inline void setURL( cOOString url, NSURL *baseURL = nil ) {
 		if ( !!url )
@@ -1120,11 +1149,14 @@ public:
 	oo_inline OORequest request() const {
 		return OORequest( get() );
 	}
-	oo_inline OOString string( NSStringEncoding *encoding = NULL ) const {
-        return request().string( encoding );
+    oo_inline BOOL operator == ( cOOURL other ) {
+        return [[get() absoluteString] isEqualToString:[other absoluteString]];
+    }
+	oo_inline OOString string( NSStringEncoding *enc = NULL, NSError **error = NULL ) const {
+        return [NSMutableString stringWithContentsOfURL:get() usedEncoding:enc error:error];
 	}
-	oo_inline OOData data() const {
-        return request().data();
+	oo_inline OOData data( NSDataReadingOptions readOptionsMask = 0, NSError **errorPtr = NULL ) const {
+        return [NSMutableData dataWithContentsOfURL:get() options:readOptionsMask error:errorPtr];
 	}
     oo_inline operator OOString () const {
         return string();
@@ -1145,12 +1177,16 @@ public:
 	oo_inline BOOL save( NSData *data, BOOL atomically = NO ) {
 		return [data writeToURL:*this atomically:atomically];
 	}
-	oo_inline BOOL save( id object ) {
-		return save( [NSKeyedArchiver archivedDataWithRootObject:object] );
+	oo_inline BOOL save( id object, BOOL atomically = NO ) {
+		return save( [NSKeyedArchiver archivedDataWithRootObject:object], atomically );
 	}
 
 	OONode xml( int flags = 0 );
 };
+
+inline OORequest::OORequest( cOOURL url ) {
+    rawset( [[NSMutableURLRequest alloc] initWithURL:url] );
+}
 
 /**
  Placeholder for a file path, see OOResource, OODocument, OOTmpFile.
@@ -1167,6 +1203,7 @@ public:
     oo_inline OOFile() {
     }
     oo_inline OOFile( NSURL *url ) : OOURL( url ) {}
+    oo_inline OOFile( cOOFile file ) : OOURL() { setPath( file.path() ); }
 	oo_inline OOFile( cOOString path, BOOL isDir = NO ) : OOURL( (NSURL *)0 ) {
 		setPath( path, isDir );
 	}
@@ -1387,10 +1424,12 @@ public:
  Wrapper for execution of command
  */
 
+typedef int (^OOTaskBlock)();
+
 class OOTask {
 public:
     int standardInput, pid;
-    FILE *exec( cOOStringArray command ) {
+    oo_inline FILE *exec( cOOStringArray command ) {
         char const *argv[100], *envp[1000], **eptr = envp;
 
         for ( int i=0 ; i<command ; i++ )
@@ -1435,13 +1474,39 @@ public:
         standardInput = input[1];
         return fdopen( output[0], "r" );
     }
-    ssize_t send( OOData input ) {
+    oo_inline FILE *exec( OOTaskBlock callback ) {
+
+        int input[2], output[2];
+        if ( pipe( input ) < 0 || pipe( output ) < 0 )
+            NSLog( @"OOTask::exec - pipe() problem" );
+
+        if ( (pid = fork()) == 0 ) {
+            // close parent pipes
+            close( input[1] );
+            close( output[0] );
+
+            // setup stdin/stdout/stderr
+            close( 0 ); dup( input[0] ); close( input[0] );
+            close( 1 ); dup( output[1] ); close( output[1] );
+            //close( 2 ); dup( output[1] ); close( output[1] );
+
+            exit( callback() );
+        }
+
+        close( input[0] );
+        close( output[1] );
+
+        standardInput = input[1];
+        return fdopen( output[0], "r" );
+    }
+
+    oo_inline ssize_t send( OOData input ) {
         ssize_t wrote = write( standardInput, [input bytes], [input length] );
         close( standardInput );
         standardInput = -1;
         return wrote;
     }
-    int wait() {
+    oo_inline int wait() {
         if ( standardInput >= 0 )
             close( standardInput );
         int status = 1;

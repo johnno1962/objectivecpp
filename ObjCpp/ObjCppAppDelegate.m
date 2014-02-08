@@ -1394,13 +1394,14 @@ static BOOL allTests = TRUE, memoryManaged = NO, useNetwork = TRUE;
 		assert( b ? 0 : 1 );
 
         // where problematic...
+        // change here
 		assert( a[@"a"] );
 		assert( a[@"a"] ? 1 : 0 );
-		assert( a[@"2"] == NSNotFound ? 1 : 0 );
-		assert( a[@"1"] != NSNotFound ? 1 : 0 );
+		assert( !a[@"2"] ? 1 : 0 );
+		assert( a[@"1"] ? 1 : 0 );
 		assert( !a[@"1"] ? 0 : 1 );
 		assert( !a[@"z"] );
-		assert( a[@"z"] != NSNotFound ? 0 : 1 );
+		assert( a[@"z"] ? 0 : 1 );
 		assert( !b[@"z"] );
 		/////assert( b[@"z"] != NSNotFound ? 0 : 1 );
 
@@ -1420,9 +1421,15 @@ static BOOL allTests = TRUE, memoryManaged = NO, useNetwork = TRUE;
         assert( c2 == @"1" );
         assert( !c3 );
 
+        // newer stuff
         OOString str = @"aaa bbb";
         OOStringVars( aa, bb ) = str[@"(\\w+) (\\w+)"];
         assert( aa == @"aaa" && bb == @"bbb" );
+
+        OOString ds = @"aa bb cc ";
+        assert( *ds[@"\\w+"] == @"aa" );
+        ds[@"\\w+"] = OOStringDictionary( @"aa", @"AA", @"bb", @"BB", nil );
+        assert( ds == @"AA BB cc " );
 	}
 
     if ( allTests ) {

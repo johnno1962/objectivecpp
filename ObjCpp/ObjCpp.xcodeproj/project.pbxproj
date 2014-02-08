@@ -44,6 +44,7 @@
 		32CA4F630368D1EE00C91783 /* ObjCpp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCpp_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* ObjCpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjCpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB00A29B186A0D3900EBE3CB /* objexp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objexp.h; sourceTree = "<group>"; };
 		BBCC93111666BFA300B28ADC /* Foundation++.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Foundation++.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +70,7 @@
 				BBCC93111666BFA300B28ADC /* Foundation++.h */,
 				22F7FF121032FFBE008D35AC /* objcpp.h */,
 				229393091045D11B00B90A18 /* objstr.h */,
+				BB00A29B186A0D3900EBE3CB /* objexp.h */,
 				22F70729103FE883008D35AC /* objvec.h */,
 				22B3C9A11073F46D00FEBE4E /* objxml.h */,
 				2204038F1052F0F100F964D3 /* objsql.h */,
@@ -259,7 +261,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 			};
 			name = Strict;
 		};
@@ -295,7 +297,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 			};
 			name = Legacy;
 		};
@@ -368,7 +370,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -386,7 +388,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

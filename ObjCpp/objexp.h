@@ -93,6 +93,10 @@ public:
 	oo_inline void init( cOOString patin, int flags );
 
 	oo_inline int exec( const char *input, int matchmax = 0, regmatch_t matches[] = NULL, int eflags = 0 ) const {
+#ifndef DEBUG
+        if ( !input || !regex )
+            return 0;
+#endif
 		int error = regexec( regex, input, matchmax, matches, eflags );
 		if ( error && error != REG_NOMATCH ) {
 			char errbuff[1024];

@@ -5,8 +5,8 @@
  *  Created by John Holdsworth on 01/04/2009.
  *  Copyright 2009 © John Holdsworth. All Rights Reserved.
  *
- *  $Id: //depot/ObjCpp/objcpp.h#112 $
- *  $DateTime: 2014/01/14 10:57:19 $
+ *  $Id: //depot/ObjCpp/objcpp.h#116 $
+ *  $DateTime: 2014/02/04 19:31:31 $
  *
  *  C++ classes to wrap up XCode classes for operator overload of
  *  useful operations such as access to NSArrays and NSDictionary
@@ -138,6 +138,23 @@ static struct { BOOL trace; } _objcpp = {NO};
 #ifndef OOWarn
 #if defined(OODEBUG) || defined(DEBUG)
 #define OOWarn OODump
+// stack traces for debug warnings
+static void OODump( NSString *format, ... ) NS_FORMAT_FUNCTION(1,2);
+static void OODump( NSString *format, ... ) {
+	va_list argp;
+    va_start(argp, format);
+	NSLogv( format, argp );
+	va_end( argp );
+
+    @try {
+        @throw [NSException alloc];
+    }
+    @catch ( NSException *ex ) {
+        NSLog( @"%@", [ex callStackSymbols] );
+    }
+
+	// (*(int *)0)++; // invalid memory access hands control over to debugger...
+}
 #else
 #define OOWarn NSLog
 #endif
@@ -200,11 +217,14 @@ static struct { BOOL trace; } _objcpp = {NO};
 // containers for OOStrings
 #define OOId OOReference<id>
 #define cOOString const OOString &
-#define cOOStringArray const OOStringArray &
 #define OOStringArray OOArray<OOString>
+#define cOOStringArray const OOStringArray &
 #define OOStringArrayArray OOArray<OOStringArray >
+#define cOOStringArrayArray const OOStringArrayArray &
 #define OOStringDictionary OODictionary<OOString>
+#define cOOStringDictionary const OOStringDictionary &
 #define OOStringDictionaryArray OOArray<OOStringDictionary >
+#define cOOStringDictionaryArray const OOStringDictionaryArray &
 
 #define OOStrArray OOStringArray
 #define OOStrDict OOStringDictionary
@@ -223,6 +243,10 @@ inline NSRange OORange( NSUInteger start, NSInteger end  ) {
 #define OORangeAll() OORangeFrom(0)
 #define OOSlice OOArray<id>
 
+#define OOInt(_val) [NSNumber numberWithInt:_val]
+#define OODouble(_val) [NSNumber numberWithDouble:_val]
+#define OORect(_rect) [NSValue valueWithRect:_rect]
+
 // variations as per taste
 #define OORef OOReference
 #define OOPtr OOPointer
@@ -235,25 +259,6 @@ inline NSRange OORange( NSUInteger start, NSInteger end  ) {
 #define OOList OOArray
 
 #define OOHome() OOString(NSHomeDirectory())
-
-
-// stack traces for debug warnings
-static void OODump( NSString *format, ... ) NS_FORMAT_FUNCTION(1,2);
-static void OODump( NSString *format, ... ) {
-	va_list argp;
-    va_start(argp, format);
-	NSLogv( format, argp );
-	va_end( argp );
-
-    @try {
-        @throw [NSException alloc];
-    }
-    @catch ( NSException *ex ) {
-        NSLog( @"%@", [ex callStackSymbols] );
-    }
-
-	// (*(int *)0)++; // invalid memory access hands control over to debugger...
-}
 
 #ifdef OODEBUG
 #define OOPrint( _obj ) NSLog( @"%s:%d - %s = %@", __FILE__, __LINE__, #_obj, *_obj )
