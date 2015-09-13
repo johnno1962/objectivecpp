@@ -5,8 +5,8 @@
  *  Created by John Holdsworth on 01/04/2009.
  *  Copyright 2009 © John Holdsworth. All Rights Reserved.
  *
- *  $Id: //depot/ObjCpp/objstr.h#113 $
- *  $DateTime: 2014/01/31 00:43:52 $
+ *  $Id: //depot/ObjCpp/objstr.h#115 $
+ *  $DateTime: 2015/09/13 03:21:49 $
  *
  *  C++ classes to wrap up XCode classes for operator overload of
  *  useful operations such as access to NSArrays and NSDictionary
@@ -172,7 +172,7 @@ class OOString : public OOReference<NSMutableString *> {
 #endif
 public:
 	oo_inline OOString() {}
-	oo_inline OOString( id val ) { set( val ); }
+    oo_inline OOString( id val ) { set( val ); }
 	oo_inline OOString( cOOString str ) { *this = str; } /// <<= ??
 	oo_inline OOString( cOOString str, NSRange range ) {
         if ( range.location != NSNotFound )
@@ -339,7 +339,7 @@ public:
 	// split by str
 	oo_inline OOStringArray operator / ( cOOString sep ) const {
 		OOPoolIfRequired;
-		return [noalloc() componentsSeparatedByString:sep];
+		return [[noalloc() componentsSeparatedByString:sep] mutableCopy];
 	}
 	oo_inline OOStringArray operator / ( const OOPattern &sep ) const;
 
@@ -899,7 +899,7 @@ public:
         return *this = *OOString( replacement );
     }
     oo_inline OOString &operator = ( cOOStringArray replacements ) {
-        return *str = OOReplace( idx, nil ).exec( *str, replacements );
+        return *str = OOReplace( idx, OONil ).exec( *str, replacements );
     }
     oo_inline OOString &operator = ( OOReplaceBlock callback ) {
         return *str = pattern().blockReplace( *str, callback );
@@ -1545,7 +1545,7 @@ public:
  */
 
 inline NSInteger OOAlert( OOString msg, id del = nil,
-                         OOString cancel = @"OK", OOString b1 = nil, OOString b2 = nil ) {
+                         OOString cancel = @"OK", OOString b1 = OONil, OOString b2 = OONil ) {
     NSLog( @"** OOAlert: %@", *msg );
 #ifdef APPKIT_EXTERN
     return [[NSAlert alertWithMessageText:*OOInfo()[kCFBundleNameKey]

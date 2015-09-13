@@ -5,8 +5,8 @@
  *  Created by John Holdsworth on 01/04/2009.
  *  Copyright 2009 © John Holdsworth. All Rights Reserved.
  *
- *  $Id: //depot/ObjCpp/objsql.h#41 $
- *  $DateTime: 2012/09/05 00:02:49 $
+ *  $Id: //depot/ObjCpp/objsql.h#42 $
+ *  $DateTime: 2015/04/14 15:08:06 $
  *
  *  C++ classes to wrap up XCode classes for operator overload of
  *  useful operations such as access to NSArrays and NSDictionary
@@ -191,7 +191,7 @@
 + (OODatabase *)sharedInstance;
 + (OODatabase *)sharedInstanceForPath:(cOOString)path;
 
-+ (BOOL)exec:(cOOString)sql, ...;
++ (BOOL)exec:(NSString *)sql, ...;
 + (OOArray<id>)select:(cOOString)select intoClass:(Class)recordClass joinFrom:(id)parent;
 + (OOArray<id>)select:(cOOString)select intoClass:(Class)recordClass;
 + (OOArray<id>)select:(cOOString)select;
@@ -218,8 +218,8 @@
 - (OOArray<OOMetaData *>)tablesRelatedByNaturalJoinFrom:(id)recordClass;
 - (OOMetaData *)tableMetaDataForClass:(Class)recordClass OO_RETURNS;
 
-- (BOOL)exec:(cOOString)sql, ...;
-- (OOString)stringForSql:(cOOString)fmt, ...;
+- (BOOL)exec:(NSString *)sql, ...;
+- (OOString)stringForSql:(NSString *)fmt, ...;
 - (id)copyJoinKeysFrom:(id)parent to:(id)newChild;
 
 - (OOArray<id>)select:(cOOString)select intoClass:(Class)recordClass joinFrom:(id)parent;

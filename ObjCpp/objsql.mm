@@ -5,8 +5,8 @@
  *  Created by John Holdsworth on 01/04/2009.
  *  Copyright 2009 John Holdsworth.
  *
- *  $Id: //depot/ObjCpp/objsql.mm#69 $
- *  $DateTime: 2014/01/09 20:25:53 $
+ *  $Id: //depot/ObjCpp/objsql.mm#71 $
+ *  $DateTime: 2015/09/13 03:21:49 $
  *
  *  C++ classes to wrap up XCode classes for operator overload of
  *  useful operations such as access to NSArrays and NSDictionary
@@ -156,7 +156,7 @@ static NSString *kOOObject = @"__OOOBJECT__", *kOOInsert = @"__ISINSERT__", *kOO
 	OOMetaData *metaData = [OOMetaData metaDataForClass:[self class]];
 	// hack required where record contains a field "description" to avoid recursion
 	OOStringArray ivars; ivars <<= *metaData->ivars; ivars -= "description";
-	return [*[metaData encode:[self dictionaryWithValuesForKeys:ivars]] description];
+	return [*[metaData encode:[[self dictionaryWithValuesForKeys:ivars] mutableCopy]] description];
 }
 
 @end
@@ -218,7 +218,7 @@ static OOReference<OODatabase *> sharedInstance;
 	 return sharedInstance;
 }
 
-+ (BOOL)exec:(cOOString)fmt, ... {
++ (BOOL)exec:(NSString *)fmt, ... {
 	va_list argp; va_start(argp, fmt);
 	NSString *sql = [[NSString alloc] initWithFormat:fmt arguments:argp];
 	va_end( argp );
@@ -312,7 +312,7 @@ static OOReference<OODatabase *> sharedInstance;
  Any results returned are placed as an array of dictionary values in the database->results.
  */
  
-- (BOOL)exec:(cOOString)fmt, ... {
+- (BOOL)exec:(NSString *)fmt, ... {
 	va_list argp; va_start(argp, fmt);
 	NSString *sql = [[NSString alloc] initWithFormat:fmt arguments:argp];
 	va_end( argp );
@@ -325,11 +325,11 @@ static OOReference<OODatabase *> sharedInstance;
  Return a single value from row 1, column one from sql sent to the database as a string.
  */
 
-- (OOString)stringForSql:(cOOString)fmt, ... {
+- (OOString)stringForSql:(NSString *)fmt, ... {
 	va_list argp; va_start(argp, fmt);
 	NSString *sql = OO_AUTORELEASE( [[NSString alloc] initWithFormat:fmt arguments:argp] );
 	va_end( argp );
-	if( [self exec:"%@", sql] && results > 0 ) {
+	if( [self exec:@"%@", sql] && results > 0 ) {
 		NSString *aColumnName = [[**results[0] allKeys] objectAtIndex:0];
 		return [(NSNumber *)(*results[0])[aColumnName] stringValue];
 	}
@@ -345,7 +345,7 @@ static OOReference<OODatabase *> sharedInstance;
 	OOMetaData *parentMetaData = [self tableMetaDataForClass:[parent class]],
 			*childMetaData = [self tableMetaDataForClass:[newChild class]];
 	OOStringArray commonColumns = [parentMetaData naturalJoinTo:childMetaData->columns]; ////
-	OOValueDictionary keyValues = [parentMetaData encode:[parent dictionaryWithValuesForKeys:commonColumns]];
+	OOValueDictionary keyValues = [parentMetaData encode:[[parent dictionaryWithValuesForKeys:commonColumns] mutableCopy]];
 	[newChild setValuesForKeysWithDictionary:[childMetaData decode:keyValues]];
 	return newChild;
 }
@@ -383,7 +383,7 @@ static OOReference<OODatabase *> sharedInstance;
 	if ( parent ) {
 		OOMetaData *parentMetaData = [self tableMetaDataForClass:[parent class]];
 		sharedColumns = [parentMetaData naturalJoinTo:metaData->joinableColumns];
-		joinValues = [parentMetaData encode:[parent dictionaryWithValuesForKeys:sharedColumns]];
+		joinValues = [parentMetaData encode:[[parent dictionaryWithValuesForKeys:sharedColumns] mutableCopy]];
 
 		sql += [self whereClauseFor:sharedColumns values:joinValues qualifyNulls:NO];
 	}
@@ -527,7 +527,7 @@ static OOReference<OODatabase *> sharedInstance;
 
 - (int)update:(id)record {
 	OOMetaData *metaData = [self tableMetaDataForClass:[record class]];
-	OOValueDictionary oldValues = [metaData encode:[record dictionaryWithValuesForKeys:metaData->columns]];
+	OOValueDictionary oldValues = [metaData encode:[[record dictionaryWithValuesForKeys:metaData->columns] mutableCopy]];
 	for ( NSString *key in *metaData->tocopy )
 		OO_RELEASE( oldValues[key] = [oldValues[key] copy] );
 	oldValues[kOOUpdate] = (id)kOOUpdate;
@@ -592,7 +592,7 @@ static OOReference<OODatabase *> sharedInstance;
 		BOOL isInsert = !!~values[kOOInsert], isUpdate = !!~values[kOOUpdate];
 
 		OOMetaData *metaData = [self tableMetaDataForClass:[object class]];
-		OOValueDictionary newValues = [metaData encode:[object dictionaryWithValuesForKeys:metaData->columns]];
+		OOValueDictionary newValues = [metaData encode:[[object dictionaryWithValuesForKeys:metaData->columns] mutableCopy]];
 		OOStringArray changedCols;
 
 		if ( isUpdate ) {
@@ -649,9 +649,9 @@ static OOReference<OODatabase *> sharedInstance;
  */
 
 - (int)commitTransaction {
-	[self exec:"BEGIN TRANSACTION"];
+	[self exec:@"BEGIN TRANSACTION"];
 	int updated = [self commit];
-	return [self exec:"COMMIT"] ? updated : 0;
+	return [self exec:@"COMMIT"] ? updated : 0;
 }
 
 /**
@@ -702,9 +702,9 @@ static OOReference<OODatabase *> sharedInstance;
 #endif
 
 		if ( metaData->tableName[0] != '_' && 
-			[self stringForSql:"select count(*) from sqlite_master where name = '%@'",
+			[self stringForSql:@"select count(*) from sqlite_master where name = '%@'",
              *metaData->tableName] == "0" )
-			if ( [self exec:"%@", *metaData->createTableSQL] )
+			if ( [self exec:@"%@", *metaData->createTableSQL] )
 				for ( NSString *idx in *metaData->indexes )
 					if ( ![self exec:idx] )
 						OOWarn( @"-[OOMetaData tableMetaDataForClass:] Error creating index: %@", idx );
@@ -753,13 +753,14 @@ static OOReference<OODatabase *> sharedInstance;
 #endif
 	if ( !value || value == OONull )
 		return sqlite3_bind_null( stmt, pno );
-#if OOSQL_THREAD_SAFE_BUT_USES_MORE_MEMORY
+//#define OOSQL_THREAD_SAFE_BUT_USES_MORE_MEMORY
+#ifdef OOSQL_THREAD_SAFE_BUT_USES_MORE_MEMORY
 	else if ( [value isKindOfClass:[NSString class]] )
 		return sqlite3_bind_text( stmt, pno, [value UTF8String], -1, SQLITE_STATIC );
 #else
 	else if ( [value isKindOfClass:[NSString class]] ) {
 		int len = (int)[value lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
-		struct _str_link *str = (struct _str_link *)malloc( sizeof *str + len );
+		struct _str_link *str = (struct _str_link *)malloc( sizeof *str->next + len + 1 );
 		str->next = strs;
 		strs = str;
 		[value getCString:str->str maxLength:len+1 encoding:NSUTF8StringEncoding];
@@ -1179,7 +1180,7 @@ static OOMetaData *tableOfTables;
                 OONull : [self metaDataForClass:[record class]];
 
 		OODictionary<NSNumber *> values = metaData == OONull ? record : 
-		*[metaData encode:[record dictionaryWithValuesForKeys:metaData->columns]];
+		*[metaData encode:[[record dictionaryWithValuesForKeys:metaData->columns] mutableCopy]];
 
 		OOStringArray line;
 		NSString *blank = @"";
@@ -1202,7 +1203,7 @@ static OOMetaData *tableOfTables;
 + (void)bindRecord:(id)record toView:(OOView *)view delegate:(id)delegate {
 #ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
 	OOMetaData *metaData = [self metaDataForClass:[record class]];
-	OOValueDictionary values = [metaData encode:[record dictionaryWithValuesForKeys:metaData->ivars]];
+    OOValueDictionary values = [metaData encode:[[record dictionaryWithValuesForKeys:metaData->ivars] mutableCopy]];
 
 	for ( int i=0 ; i<metaData->ivars ; i++ ) {
 		UILabel *label = (UILabel *)[view viewWithTag:1+i];

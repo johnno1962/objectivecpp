@@ -32,12 +32,12 @@
 - (void)loadRoot {
 	OOStringArray recordClassNames = [[OODatabase sharedInstance] registerSubclassesOf:[OORecord class]];
 
-	if ( [[OODatabase sharedInstance] stringForSql:"select count(*) from Authors"] == "0" ) {
+	if ( [[OODatabase sharedInstance] stringForSql:@"select count(*) from Authors"] == "0" ) {
 		for ( NSString *table in *recordClassNames ) {
 			OOResource flatFile( OOFormat(@"%@.txt", [table lowercaseString]) );
 			if ( !flatFile.exists() )
 				continue;
-			[OODatabase exec:"delete from %@",table];
+			[OODatabase exec:@"delete from %@",table];
 			Class recordClass = [[NSBundle mainBundle] classNamed:table];
 			int imported = [recordClass importFrom:flatFile delimiter:"~"],
 			exported = [OOMetaData export:[recordClass select] delimiter:"~"] / "\n";

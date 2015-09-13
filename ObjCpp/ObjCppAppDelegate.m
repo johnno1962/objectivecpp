@@ -1463,8 +1463,8 @@ static BOOL allTests = TRUE, memoryManaged = NO, useNetwork = TRUE;
         NSLog( @"objsql tests" );
         OOPool pool;
 
-		[OODatabase exec:"drop table if exists PARENT_TABLE"];
-		[OODatabase exec:"drop table if exists CHILD_TABLE"];
+		[OODatabase exec:@"drop table if exists PARENT_TABLE"];
+		[OODatabase exec:@"drop table if exists CHILD_TABLE"];
 
 		// populate parent a child records
 		for ( int i=0 ; i<10 ; i++ ) {

@@ -104,7 +104,7 @@
 	alreadySaving = YES;
     OOPool pool;
 	NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
-	[OODatabase exec:"delete from iTunesItem"];
+	[OODatabase exec:@"delete from iTunesItem"];
 	[OODatabase insertArray:rows];
 	[OODatabase commit];
 	NSLog( @"Save: %f", [NSDate timeIntervalSinceReferenceDate]-start );
